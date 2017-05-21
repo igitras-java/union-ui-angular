@@ -1,0 +1,10 @@
+<md-card>
+    <md-card-title class="login-tip">您还没有登录!</md-card-title>
+    <md-card-content>
+        <button *ngIf="!loggedIn" md-raised-button color="primary" (click)="loginUuap()" class="login-button">
+            使用UUAP进行登录
+        </button>
+        <button md-raised-button color="primary" *ngIf="loggedIn" (click)="goHome()" class="login-button">您已登录,回首页!
+        </button>
+    </md-card-content>
+</md-card>

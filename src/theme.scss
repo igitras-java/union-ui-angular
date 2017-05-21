@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+@import './platform/core/theming/all-theme';
+
+// NOTE: Theming is currently experimental and not yet publically released!
+
+@include mat-core();
+
+$primary: mat-palette($mat-blue);
+$accent: mat-palette($mat-blue-grey, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+@include ig-theme($theme);
+
+$foreground: map-get($theme, foreground);
+$background: map-get($theme, background);
+
+.app-dark {
+    $dark-primary: mat-palette($mat-pink, 700, 500, 900);
+    $dark-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+    $dark-warn: mat-palette($mat-deep-orange);
+
+    $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+    @include angular-material-theme($dark-theme);
+}

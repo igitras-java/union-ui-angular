@@ -1,0 +1,11 @@
+<dialog>
+    <dialog-title *ngIf="title">
+        {{title}}
+    </dialog-title>
+    <dialog-content class="md-subhead tc-grey-700">
+        {{message}}
+    </dialog-content>
+    <dialog-actions>
+        <button md-button color="accent" (click)="close()">{{closeButton}}</button>
+    </dialog-actions>
+</dialog>

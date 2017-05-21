@@ -1,0 +1,46 @@
+<section>
+    <div class="container">
+        <div layout="row" layout-align="end end">
+
+            <search [searchItemAddition]="searchItemAddition" [items]="columns" flex="100"
+                    *ngIf="searching"
+                    [placeholder]="'Search'" (search)="onSearch($event)"></search>
+            <button md-icon-button [color]="'accent'" (click)="showSearchBar()">
+                <md-icon>search</md-icon>
+            </button>
+            <button md-icon-button [color]="'primary'">
+                <md-icon>add</md-icon>
+            </button>
+            <button md-icon-button [color]="'warn'">
+                <md-icon>delete_forever</md-icon>
+            </button>
+            <button md-icon-button [color]="'accent'">
+                <md-icon>more_vert</md-icon>
+            </button>
+        </div>
+        <data-table
+                #dataTable
+                [page]="pageData"
+                [columns]="columns"
+                [selectable]="selectable"
+                [clickable]="clickable"
+                [multiple]="multiple"
+                [sortable]="true"
+                [sortBy]="sortBy"
+                [actions]="actions"
+                [(ngModel)]="selectedRows"
+                [sortOrder]="sortOrder"
+                (sortChange)="sort($event)"
+                (rowActionPerform)="performAction($event)"
+                (rowClick)="showAlert($event)">
+        </data-table>
+        <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+            <h3>No results to display.</h3>
+        </div>
+        <!--<pagination #pagingBar [page]="dataTable.page">-->
+            <!--<span pagination-label hide-xs>每页显示:</span>-->
+            <!--当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>-->
+        <!--</pagination>-->
+
+    </div>
+</section>

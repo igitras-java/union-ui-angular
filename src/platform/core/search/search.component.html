@@ -1,0 +1,37 @@
+<div flex>
+    <md-chip-list [tabIndex]="-1" (focus)="focus()">
+        <ng-template let-item let-index="index" ngFor [ngForOf]="value">
+            <md-basic-chip class="search-item" (keydown)="_chipKeydown($event, index)">
+                <span>{{item.field.label || item.field.name}}: {{item.value}}</span>
+                <md-icon *ngIf="!readOnly" (click)="removeSearchItem(item)">
+                    cancel
+                </md-icon>
+            </md-basic-chip>
+        </ng-template>
+        <md-input-container [floatPlaceholder]="'never'"
+                            [style.width.px]="searchItemAddition ? null : 0">
+            <input mdInput
+                   flex="100"
+                   #input
+                   type="search"
+                   [mdAutocomplete]="autocomplete"
+                   [formControl]="inputControl"
+                   [placeholder]="searchItemAddition? placeholder : ''"
+                   (keydown)="_inputKeydown($event)"
+                   (keyup.enter)="handleSearch()"
+                   (focus)="handleFocus()"
+                   (blur)="handleBlur()">
+        </md-input-container>
+    </md-chip-list>
+    <div *ngIf="searchItemAddition" class="mat-input-underline">
+        <span class="mat-input-ripple"
+              [class.mat-focused]="focused"></span>
+    </div>
+    <md-autocomplete #autocomplete="mdAutocomplete">
+        <ng-template let-item ngFor [ngForOf]="filteredItems">
+            <md-option (click)="addSearchItem(item)">
+                {{item.label || item.name}}: {{input.value}}
+            </md-option>
+        </ng-template>
+    </md-autocomplete>
+</div>

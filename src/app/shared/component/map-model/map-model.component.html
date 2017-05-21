@@ -1,0 +1,42 @@
+<button md-raised-button color="primary" *ngIf="editable && !adding" (click)="addingEntry()">
+    <md-icon class="add-icon">add</md-icon>
+    <span class="add-word">添加{{title}}</span>
+</button>
+<div *ngIf="adding">
+    <md-input-container>
+        <input mdInput placeholder="键" [(ngModel)]="entryKey" required>
+    </md-input-container>
+    <md-input-container>
+        <input mdInput placeholder="值" [(ngModel)]="entryValue" required>
+    </md-input-container>
+    <button md-raised-button color="primary" (click)="confirmAdding(false)">
+        <span class="add-word">添加</span>
+    </button>
+    <button md-raised-button color="accent" (click)="confirmAdding(true)">
+        <span class="cancel-word">继续添加</span>
+    </button>
+    <button md-button (click)="cancelAdding()">
+        <span class="cancel-word">取消</span>
+    </button>
+</div>
+
+<table class="header-bar" style="width: 100%" *ngIf="model">
+    <thead>
+    <tr>
+        <td>键</td>
+        <td>值</td>
+        <td *ngIf="editable">操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let k of keys(model)">
+        <td class="td-middle">{{k}}</td>
+        <td class="td-middle">{{model[k]}}</td>
+        <td *ngIf="editable" class="td-middle">
+            <button md-icon-button color="accent" (click)="removeEntry(k)">
+                <i class="material-icons">delete_forever</i>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>

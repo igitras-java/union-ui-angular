@@ -1,0 +1,11 @@
+:host {
+  border-bottom: 1px solid;
+}
+
+tbody > :host {
+  height: 48px;
+}
+
+thead > :host {
+  height: 56px;
+}

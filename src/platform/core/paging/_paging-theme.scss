@@ -1,0 +1,16 @@
+@import "../common/styles/theme-functions";
+
+@mixin paging-theme($theme) {
+    $primary: map-get($theme, primary);
+
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    pager, pagination {
+        &, & md-select .mat-select-value {
+            color: mat-color($foreground, secondary-text);
+        }
+    }
+}

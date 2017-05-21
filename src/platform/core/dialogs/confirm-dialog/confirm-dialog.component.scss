@@ -1,0 +1,10 @@
+@media (min-width: 600px) {
+  dialog {
+    width: 400px;
+  }
+}
+@media (max-width: 599px) {
+  dialog {
+    width: 250px;
+  }
+}

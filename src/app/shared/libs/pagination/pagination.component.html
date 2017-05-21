@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <span>总数: {{_page.totalElements}}</span>
+
+
+    <div>
+        <button md-icon-button color="primary" [disabled]="isFirstPage()" (click)="viewPage(0)">
+            <md-icon>first_page</md-icon>
+        </button>
+        <button md-icon-button color="primary" [disabled]="isFirstPage()" (click)="viewPage(_page.number - 1)">
+            <md-icon>navigate_before</md-icon>
+        </button>
+
+        <button md-icon-button *ngFor="let p of _pageItems" color="primary" [disabled]="p.value === _page.number"
+                (click)="viewPage(p.value)">{{p.label}}
+        </button>
+
+        <button md-icon-button color="primary" [disabled]="isLastPage()" (click)="viewPage(_page.number + 1)">
+            <md-icon>navigate_next</md-icon>
+        </button>
+
+        <button md-icon-button color="primary" [disabled]="isLastPage()" (click)="viewPage(getLastPage())">
+            <md-icon>last_page</md-icon>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<md-toolbar color="primary">
+    <span [routerLink]="['/']">
+        {{appName}}
+    </span>
+    <!--<div>-->
+        <!--<a md-button [routerLink]="['/template/template-list']">-->
+            <!--模板-->
+        <!--</a>-->
+        <!--<a *ngIf="login" md-button [routerLink]="['/guardian/guardian-list']">-->
+            <!--机器人-->
+        <!--</a>-->
+        <!--<a *ngIf="isAdmin()" md-button [md-menu-trigger-for]="adminMenu">-->
+            <!--管理员-->
+        <!--</a>-->
+        <!--<a *ngIf="!login" md-button [routerLink]="['/account/login']">登录</a>-->
+
+        <!--<a *ngIf="login" md-button [md-menu-trigger-for]="profileMenu">-->
+            <!--{{accountName}}-->
+        <!--</a>-->
+        <!--<a md-icon-button [md-menu-trigger-for]="docMenu" title="帮助手册">-->
+            <!--<md-icon>book</md-icon>-->
+        <!--</a>-->
+    <!--</div>-->
+
+</md-toolbar>
+
+<md-menu #docMenu="mdMenu">
+    <a md-menu-item href="http://wiki.baidu.com/pages/viewpage.action?pageId=326348824" target="_blank">帮助手册</a>
+    <a md-menu-item (click)="openDoc('are')" target="_blank">ARE文档</a>
+    <a md-menu-item (click)="openDoc('framework')" target="_blank">Framework文档</a>
+    <a md-menu-item (click)="openDoc('opal')" target="_blank">OPAL文档</a>
+</md-menu>
+
+<md-menu #profileMenu="mdMenu">
+    <a md-menu-item [routerLink]="['/account/profile']">个人信息</a>
+    <a md-menu-item (click)="logout()">退出</a>
+</md-menu>
+
+<md-menu #adminMenu="mdMenu">
+    <a md-menu-item [routerLink]="['/admin/global-config']">系统配置</a>
+    <a md-menu-item [routerLink]="['/admin/gm-role-list']">管理员管理</a>
+    <a md-menu-item [routerLink]="['/admin/guardian-pool-list']">资源池管理</a>
+    <a md-menu-item [routerLink]="['/admin/action-list']">操作点管理</a>
+    <a md-menu-item [routerLink]="['/admin/authority-list']">权限管理</a>
+    <a md-menu-item [routerLink]="['/admin/role-list']">角色管理</a>
+    <a md-menu-item [routerLink]="['/admin/abs-sync-list']">Abs同步管理</a>
+</md-menu>

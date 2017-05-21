@@ -1,0 +1,37 @@
+@import '../common/styles/theme-functions';
+
+@mixin search-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    // search
+    search {
+        // search items
+        .mat-basic-chip {
+            background: mat-color($background, status-bar);
+            color: mat-color($foreground, text);
+            &:focus:not(.chip-disabled) {
+                background: mat-color($primary);
+                &, md-icon {
+                    color: mat-color($primary, default-contrast);
+                    md-icon:hover {
+                        color: mat-color($foreground, icon);
+                    }
+                }
+            }
+            md-icon {
+                color: mat-color($foreground, hint-text);
+                &:hover {
+                    color: mat-color($foreground, icon);
+                }
+            }
+        }
+
+        .search-item {
+            border-radius: 0 !important;
+        }
+    }
+}

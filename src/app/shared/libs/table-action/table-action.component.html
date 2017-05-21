@@ -1,0 +1,7 @@
+<div class="panel table-action" fxLayout="row" fxLayoutAlign="end center">
+    <button md-icon-button md-ripple color="primary" (click)="add($event)">
+        <md-icon color="primary">add</md-icon>
+    </button>
+    <app-search [placeholder]="'Search'" [searchFields]="searchFields" (onSearch)="search($event)" >
+    </app-search>
+</div>

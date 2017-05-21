@@ -1,0 +1,14 @@
+@import '../common/common-theme';
+@import '../data-table/data-table-theme';
+@import '../chips/chips-theme';
+@import '../search/search-theme';
+@import '../paging/paging-theme';
+
+// Create a theme.
+@mixin ig-theme($theme) {
+    @include common-theme($theme);
+    @include data-table-theme($theme);
+    @include chips-theme($theme);
+    @include search-theme($theme);
+    @include paging-theme($theme)
+}

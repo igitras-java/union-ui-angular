@@ -1,0 +1,41 @@
+{
+    "name": "@igitras/core",
+    "version": "1.0.0-beta.1",
+    "description": "Igitras UI Platform built on Angular Material",
+    "main": "./core.umd.js",
+    "module": "./index.js",
+    "typings": "./index.d.ts",
+    "keywords": [
+        "angular",
+        "material",
+        "material design",
+        "components",
+        "reusable"
+    ],
+    "scripts": {
+    },
+    "engines": {
+        "node": ">=6.9",
+        "npm": ">= 3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/igitras/union-ui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/igitras/union-ui/issues"
+    },
+    "license": "MIT",
+    "author": "Union UX",
+    "peerDependencies": {
+        "@angular/common": "^4.1.0",
+        "@angular/core": "^4.1.0",
+        "@angular/forms": "^4.1.0",
+        "@angular/http": "^4.1.0",
+        "@angular/router": "^4.1.0",
+        "@angular/material": "2.0.0-beta.5"
+    },
+    "devDependencies": {
+        "@angular/cli": "^1.0.1"
+    }
+}

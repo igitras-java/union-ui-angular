@@ -1,0 +1,15 @@
+.app-search {
+    overflow-x: hidden;
+    /deep/ md-input-container.mat-hide-underline {
+        .mat-input-underline {
+            display: none;
+        }
+    }
+}
+
+.search-item {
+    span {
+        padding: 7px;
+        margin-right: 5px;
+    }
+}

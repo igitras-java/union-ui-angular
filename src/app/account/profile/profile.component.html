@@ -1,0 +1,13 @@
+<md-card>
+    <md-card-title>
+        <span class="common-title">个人中心</span>
+    </md-card-title>
+    <md-card-content>
+        <app-profile-model [editable]="false" [(model)]="profile"></app-profile-model>
+    </md-card-content>
+    <md-card-actions>
+        <button *ngIf="!hasToken()" md-raised-button color="primary" (click)="generateToken()">
+            <span class="add-word">生成Token</span>
+        </button>
+    </md-card-actions>
+</md-card>

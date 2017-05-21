@@ -1,0 +1,19 @@
+<dialog>
+  <dialog-title *ngIf="title">
+    {{title}}
+  </dialog-title>
+  <dialog-content class="md-subhead tc-grey-700">
+    {{message}}
+  </dialog-content>
+  <dialog-actions>
+    <button md-button
+            #closeBtn 
+            (keydown.arrowright)="acceptBtn.focus()"
+            (click)="cancel()">{{cancelButton}}</button>
+    <button md-button
+            color="accent"
+            #acceptBtn
+            (keydown.arrowleft)="closeBtn.focus()"
+            (click)="accept()">{{acceptButton}}</button>
+  </dialog-actions>
+</dialog>

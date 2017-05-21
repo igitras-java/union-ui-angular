@@ -1,0 +1,27 @@
+<div class="app-search">
+
+</div>
+<button md-icon-button color="accent" *ngIf="!searching" (click)="toggleSearching()">
+    <md-icon>search</md-icon>
+</button>
+<div class="app-search" appLayout *ngIf="searching">
+    <md-input-container [class.mat-hide-underline]="!showUnderline" floatPlaceholder="never">
+        <div class="label search-item" md-prefix><span *ngIf="_searchItem">{{_searchItem.title}}: {{_searchItem.value}}</span></div>
+        <input matInput
+               #searchElement
+               type="search"
+               [(ngModel)]="value"
+               [placeholder]="placeholder"
+               (focus)="focus()"
+               (blur)="blur()"
+               (keyup.enter)=handleSearch()
+               (keyup.backspace)="handleBackspace()"
+               [mdAutocomplete]="autoSearch">
+    </md-input-container>
+    <md-autocomplete #autoSearch="mdAutocomplete">
+        <md-option *ngFor="let option of _searchFields" [value]="option.name"
+                   (click)="selectField(option)">
+            {{option.title}}: {{value}}
+        </md-option>
+    </md-autocomplete>
+</div>

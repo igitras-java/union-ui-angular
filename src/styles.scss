@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+/* This must be included to use the included variables and the color function */
+@import 'theme';
+
+$mason: mat-palette($mat-grey);
+
+md-card {
+    margin: 10px;
+    box-shadow: none;
+
+    md-card {
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+//.panel {
+//    background: $white-87-opacity;
+//    margin: 12px;
+//    padding: 24px;
+//    border-radius: 2px;
+//
+//    .panel {
+//        margin: 24px 0 0 0;
+//        padding: 2px;
+//    }
+//
+//    .header {
+//        padding: 6px 0;
+//        font-size: 24px;
+//        font-weight: 400;
+//    }
+//
+//    .body {
+//
+//    }
+//
+//    .divider {
+//        width: auto;
+//        height: 6px;
+//        padding: 12px;
+//        color: mat-color($mason);
+//    }
+//
+//    .footer {
+//        padding: 6px 0;
+//    }
+//}
+
+.label {
+    span {
+        padding: 0 5px;
+        background: mat-color($primary, 100);
+        font-size: 12px;
+        color: mat-color($mason);
+    }
+}
