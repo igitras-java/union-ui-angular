@@ -29,15 +29,15 @@ export class HomeComponent implements OnInit {
     firstLast: boolean = true;
 
     columns: IFieldDescriptor[] = [
-        {name: 'name', label: 'Dessert (100g serving)', sortable: true, searchable: true},
+        {name: 'name', label: 'Dessert', unit: '100g serving', sortable: true, searchable: true},
         {name: 'type', label: 'Type', filter: true, searchable: true},
         {name: 'calories', label: 'Calories', numeric: true, format: NUMBER_FORMAT, sortable: true, hidden: false},
-        {name: 'fat', label: 'Fat (g)', numeric: true, format: DECIMAL_FORMAT, sortable: true, searchable: true},
-        {name: 'carbs', label: 'Carbs (g)', numeric: true, format: NUMBER_FORMAT, searchable: true},
-        {name: 'protein', label: 'Protein (g)', numeric: true, format: DECIMAL_FORMAT, searchable: true},
-        {name: 'sodium', label: 'Sodium (mg)', numeric: true, format: NUMBER_FORMAT, searchable: true},
-        {name: 'calcium', label: 'Calcium (%)', numeric: true, format: NUMBER_FORMAT, searchable: true},
-        {name: 'iron', label: 'Iron (%)', numeric: true, format: NUMBER_FORMAT, searchable: true},
+        {name: 'fat', label: 'Fat', unit: 'g', numeric: true, format: DECIMAL_FORMAT, sortable: true, searchable: true},
+        {name: 'carbs', label: 'Carbs', unit: 'g', numeric: true, format: NUMBER_FORMAT, searchable: true},
+        {name: 'protein', label: 'Protein', unit: 'g', numeric: true, format: DECIMAL_FORMAT, searchable: true},
+        {name: 'sodium', label: 'Sodium', unit: 'mg', numeric: true, format: NUMBER_FORMAT, searchable: true},
+        {name: 'calcium', label: 'Calcium', unit: '%', numeric: true, format: NUMBER_FORMAT, searchable: true},
+        {name: 'iron', label: 'Iron', unit: '%', numeric: true, format: NUMBER_FORMAT, searchable: true},
     ];
 
     searching: boolean = false;
@@ -154,17 +154,6 @@ export class HomeComponent implements OnInit {
             'sodium': 54.0,
             'calcium': 12.0,
             'iron': 6.0,
-        }, {
-            'id': 11,
-            'name': 'Chamoy',
-            'type': 'Candy',
-            'calories': 518.0,
-            'fat': 26.0,
-            'carbs': 65.0,
-            'protein': 7.0,
-            'sodium': 54.0,
-            'calcium': 12.0,
-            'iron': 6.0,
         },
     ];
     selectable: boolean = true;
@@ -182,11 +171,11 @@ export class HomeComponent implements OnInit {
     sortBy: string = 'name';
     sortOrder: Direction = Direction.Descending;
     pageData: IPage = <IPage>{
-        numberOfElements: 9,
+        numberOfElements: 10,
         first: false,
         number: 0,
-        size: 9,
-        totalPages: 49,
+        size: 10,
+        totalPages: 44,
         totalElements: 440,
         last: false,
         content: this.data

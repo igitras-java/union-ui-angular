@@ -9,6 +9,11 @@ export * from './common/common.module';
 export * from './search/search.module'
 
 /**
+ * PAGING
+ */
+export * from './paging/paging.module'
+
+/**
  * DATA TABLE
  */
 export * from './data-table/data-table.module';
@@ -18,7 +23,3 @@ export * from './data-table/data-table.module';
  */
 export * from './dialogs/dialogs.module';
 
-/**
- * PAGING
- */
-export * from './paging/paging.module'

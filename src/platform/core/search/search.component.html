@@ -12,13 +12,13 @@
                             [style.width.px]="searchItemAddition ? null : 0">
             <input mdInput
                    flex="100"
-                   #input
-                   type="search"
+                   #search
                    [mdAutocomplete]="autocomplete"
                    [formControl]="inputControl"
                    [placeholder]="searchItemAddition? placeholder : ''"
                    (keydown)="_inputKeydown($event)"
                    (keyup.enter)="handleSearch()"
+                   (keyup.esc)="handleCancelled()"
                    (focus)="handleFocus()"
                    (blur)="handleBlur()">
         </md-input-container>
@@ -30,7 +30,7 @@
     <md-autocomplete #autocomplete="mdAutocomplete">
         <ng-template let-item ngFor [ngForOf]="filteredItems">
             <md-option (click)="addSearchItem(item)">
-                {{item.label || item.name}}: {{input.value}}
+                {{item.label || item.name}}: {{search.value}}
             </md-option>
         </ng-template>
     </md-autocomplete>

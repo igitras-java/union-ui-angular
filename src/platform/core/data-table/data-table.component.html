@@ -1,5 +1,5 @@
 <div class="mat-table-container">
-    <data-table-actions></data-table-actions>
+    <data-table-actions [(columns)]="columns"></data-table-actions>
     <table data-table
            [class.mat-selectable]="isSelectable"
            [class.mat-clickable]="isClickable">
@@ -25,7 +25,9 @@
             [sortOrder]="sortOrderEnum"
             [hidden]="column.hidden"
             (sortChange)="handleSort(column)">
-            <span [mdTooltip]="column.tooltip">{{column.label}}</span>
+            <span [mdTooltip]="column.tooltip">
+                {{column.label? (column.unit? column.label + ' (' + column.unit + ')': column.label): column.name}}
+            </span>
         </th>
         <th data-table-column *ngIf="hasAction">
             Action
@@ -70,4 +72,8 @@
     <div class="md-padding" *ngIf="!hasData" layout="row" layout-align="center center">
         <h3>No results to display.</h3>
     </div>
+    <pagination #pagingBar [page]="page">
+        <span pagination-label hide-xs>每页显示:</span>
+        当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>
+    </pagination>
 </div>

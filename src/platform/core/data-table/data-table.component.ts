@@ -12,7 +12,6 @@ import {
     Output,
     QueryList,
     TemplateRef,
-    ViewChild,
     ViewChildren
 } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
@@ -24,7 +23,6 @@ import { DataTableRowComponent } from './data-table-row/data-table-row.component
 import { IDataTableSortChangeEvent } from './data-table-column/data-table-column.component';
 import { DataTableTemplateDirective } from './directives/data-table-template.directive';
 import { Direction, IFieldDescriptor, IPage } from '@igitras/core';
-import { DataTableActionsComponent } from '@igitras/core/data-table/data-table-actions/data-table-actions.component';
 
 const noop: any = () => {
     // empty method
@@ -105,7 +103,6 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     @ContentChildren(DataTableTemplateDirective) _templates: QueryList<DataTableTemplateDirective>;
 
     @ViewChildren(DataTableRowComponent) _rows: QueryList<DataTableRowComponent>;
-    @ViewChild(DataTableActionsComponent) _action: DataTableActionsComponent;
 
     /**
      * Returns true if all values are selected.

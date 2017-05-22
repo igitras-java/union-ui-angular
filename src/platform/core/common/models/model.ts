@@ -3,7 +3,8 @@
  */
 export interface IFieldDescriptor {
     name: string;
-    label: string;
+    label?: string;
+    unit?: string;
     tooltip?: string;
     numeric?: boolean;
     format?: (value: any) => any;

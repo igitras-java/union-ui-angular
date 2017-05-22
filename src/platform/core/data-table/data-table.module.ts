@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MdButtonModule, MdCheckboxModule, MdIconModule, MdSelectionModule, MdTooltipModule } from '@angular/material';
 
-import { IgCommonModule } from '@igitras/core';
+import { IgCommonModule, IgPagingModule, IgSearchModule } from '@igitras/core';
 import { DataTableTemplateDirective } from './directives/data-table-template.directive';
 import { DataTableComponent } from './data-table.component';
 import { DataTableColumnComponent } from './data-table-column/data-table-column.component';
@@ -50,6 +50,8 @@ export { DataTableTableComponent } from './data-table-table/data-table-table.com
         MdButtonModule,
         MdSelectionModule,
         IgCommonModule,
+        IgSearchModule,
+        IgPagingModule,
     ],
     declarations: [
         DATA_TABLE,

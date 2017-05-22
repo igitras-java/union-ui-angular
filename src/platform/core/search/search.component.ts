@@ -13,6 +13,7 @@ import {
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BACKSPACE, DELETE, ESCAPE, LEFT_ARROW, MdChip, MdInputDirective, RIGHT_ARROW } from '@angular/material';
 import { IFieldDescriptor } from 'platform/core';
+import { Focusable } from '@angular/material/typings/core/a11y/focus-key-manager';
 
 const noop: any = () => {
     // empty method
@@ -35,7 +36,7 @@ export interface ISearchItem {
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements DoCheck, OnInit {
+export class SearchComponent implements Focusable, DoCheck, OnInit {
     /**
      * Implemented as part of ControlValueAccessor.
      */
@@ -61,7 +62,7 @@ export class SearchComponent implements DoCheck, OnInit {
 
 
     /**
-     * Observable of items to render in the autocomplete
+     * Observable of items to render in the select auto complete.
      */
     filteredItems: IFieldDescriptor[] = [];
 
@@ -106,6 +107,7 @@ export class SearchComponent implements DoCheck, OnInit {
      */
     @Output('search') search: EventEmitter<ISearchItem[] | string> = new EventEmitter<ISearchItem[] | string>();
 
+    @Output('cancel') cancel: EventEmitter<void> = new EventEmitter<void>();
 
     /**
      * Implemented as part of ControlValueAccessor.
@@ -123,6 +125,7 @@ export class SearchComponent implements DoCheck, OnInit {
     }
 
     ngOnInit() {
+        this.focused = true;
     }
 
     ngDoCheck(): void {
@@ -186,15 +189,6 @@ export class SearchComponent implements DoCheck, OnInit {
         return result;
     }
 
-    handleSearch(): void {
-        console.log("handle search");
-        if (this.value && this.value.length > 0) {
-            this.search.emit(this.value);
-        } else {
-            this.search.emit(this._inputValue);
-        }
-    }
-
     /**
      * Method that is executed when trying to remove a chip.
      * returns 'true' if successful, 'false' if it fails.
@@ -211,8 +205,23 @@ export class SearchComponent implements DoCheck, OnInit {
         return true;
     }
 
+    handleSearch(): void {
+        console.log("handle search");
+        if (this.value && this.value.length > 0) {
+            this.search.emit(this.value);
+        } else {
+            this.search.emit(this._inputValue);
+        }
+    }
+
+    handleCancelled(): void {
+        console.log("cancelled search");
+        this._value = [];
+        this._filter();
+        this.cancel.emit();
+    }
+
     handleFocus(): boolean {
-        this.focused = true;
         if (!this._inputValueSubscription) {
             this._inputValueSubscription = this.inputControl.valueChanges
                 .skip(1)
@@ -223,6 +232,7 @@ export class SearchComponent implements DoCheck, OnInit {
                 this._inputValue = value;
                 console.log(this._inputValue);
             });
+        this.focused = true;
         return true;
     }
 

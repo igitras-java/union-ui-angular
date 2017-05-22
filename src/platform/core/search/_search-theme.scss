@@ -28,10 +28,20 @@
                     color: mat-color($foreground, icon);
                 }
             }
+            md-input-container {
+                line-height: 40px;
+            }
         }
 
         .search-item {
             border-radius: 0 !important;
+        }
+
+        mat-input-container,
+        md-input-container {
+            md-icon {
+                cursor: pointer;
+            }
         }
     }
 }
