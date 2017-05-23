@@ -8,7 +8,7 @@ import {
     MdCoreModule,
     MdDialogModule,
     MdIconModule,
-    MdInputModule,
+    MdInputModule, MdListModule,
     MdMenuModule,
     MdProgressBarModule,
     MdSelectModule,
@@ -16,7 +16,7 @@ import {
     MdToolbarModule,
     MdTooltipModule
 } from '@angular/material';
-import { IgCommonModule, IgDataTableModule, IgPagingModule, IgSearchModule } from '@igitras/core';
+import { IgActionBarModule, IgCommonModule, IgDataTableModule, IgPagingModule, IgSearchModule } from '@igitras/core';
 
 @NgModule({
     imports: [
@@ -35,7 +35,9 @@ import { IgCommonModule, IgDataTableModule, IgPagingModule, IgSearchModule } fro
         MdTooltipModule,
         MdDialogModule,
         MdAutocompleteModule,
+        MdListModule,
 
+        IgActionBarModule,
         IgCommonModule,
         IgDataTableModule,
         IgPagingModule,
@@ -57,9 +59,11 @@ import { IgCommonModule, IgDataTableModule, IgPagingModule, IgSearchModule } fro
         MdTooltipModule,
         MdDialogModule,
         MdAutocompleteModule,
+        MdListModule,
 
         IgCommonModule,
         IgDataTableModule,
+        IgActionBarModule,
         IgPagingModule,
         IgSearchModule
     ]

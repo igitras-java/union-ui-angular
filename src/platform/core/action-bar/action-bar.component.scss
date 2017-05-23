@@ -1,0 +1,13 @@
+@import '../common/styles/mixins';
+
+:host {
+    display: block;
+}
+
+.mat-icon-button {
+    margin: 3px;
+}
+
+.action-bar {
+    font-size: 14px;
+}

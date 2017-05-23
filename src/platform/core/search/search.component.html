@@ -1,5 +1,5 @@
-<div flex>
-    <md-chip-list [tabIndex]="-1" (focus)="focus()">
+<div flex layout="row">
+    <md-chip-list [tabIndex]="-1" (focus)="focus()" layout="row">
         <ng-template let-item let-index="index" ngFor [ngForOf]="value">
             <md-basic-chip class="search-item" (keydown)="_chipKeydown($event, index)">
                 <span>{{item.field.label || item.field.name}}: {{item.value}}</span>
@@ -8,30 +8,28 @@
                 </md-icon>
             </md-basic-chip>
         </ng-template>
-        <md-input-container [floatPlaceholder]="'never'"
-                            [style.width.px]="searchItemAddition ? null : 0">
-            <input mdInput
-                   flex="100"
-                   #search
-                   [mdAutocomplete]="autocomplete"
-                   [formControl]="inputControl"
-                   [placeholder]="searchItemAddition? placeholder : ''"
-                   (keydown)="_inputKeydown($event)"
-                   (keyup.enter)="handleSearch()"
-                   (keyup.esc)="handleCancelled()"
-                   (focus)="handleFocus()"
-                   (blur)="handleBlur()">
-        </md-input-container>
     </md-chip-list>
-    <div *ngIf="searchItemAddition" class="mat-input-underline">
+    <md-input-container [floatPlaceholder]="'never'" flex>
+        <input mdInput
+               #search
+               [mdAutocomplete]="autocomplete"
+               [formControl]="inputControl"
+               [placeholder]="searchItemAddition? placeholder : ''"
+               (keydown)="_inputKeydown($event)"
+               (keyup.enter)="handleSearch()"
+               (keyup.esc)="handleCancelled()"
+               (focus)="handleFocus()"
+               (blur)="handleBlur()">
+    </md-input-container>
+</div>
+<div *ngIf="searchItemAddition" class="mat-input-underline">
         <span class="mat-input-ripple"
               [class.mat-focused]="focused"></span>
-    </div>
-    <md-autocomplete #autocomplete="mdAutocomplete">
-        <ng-template let-item ngFor [ngForOf]="filteredItems">
-            <md-option (click)="addSearchItem(item)">
-                {{item.label || item.name}}: {{search.value}}
-            </md-option>
-        </ng-template>
-    </md-autocomplete>
 </div>
+<md-autocomplete #autocomplete="mdAutocomplete">
+    <ng-template let-item ngFor [ngForOf]="filteredItems">
+        <md-option (click)="addSearchItem(item)">
+            {{item.label || item.name}}: {{search.value}}
+        </md-option>
+    </ng-template>
+</md-autocomplete>

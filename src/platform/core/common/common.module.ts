@@ -23,8 +23,9 @@ import { FormsModule } from '@angular/forms';
 /**
  * MODELS
  */
-import { Direction, IOrder, IPage, IPageable, ISort } from './models/page';
-import { IFieldDescriptor } from './models/model';
+import { Direction, IOrder, IPage, IPageable } from './models/page';
+import { IAction, IActionPerformedEvent, IContext, IFieldDescriptor } from './models/model';
+import { MdListModule } from '@angular/material';
 
 /**
  * ANIMATIONS
@@ -63,21 +64,15 @@ const PIPES: Type<any>[] = [
 ];
 
 export {
-    TimeAgoPipe,
-    TimeDifferencePipe,
-    BytesPipe,
-    DigitsPipe,
-    TruncatePipe
-};
-
-export {
     IPage,
     IPageable,
-    ISort,
     IOrder,
     Direction,
-    
-    IFieldDescriptor
+
+    IFieldDescriptor,
+    IAction,
+    IActionPerformedEvent,
+    IContext,
 }
 
 @NgModule({

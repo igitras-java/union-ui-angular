@@ -1,7 +1,9 @@
-<div class="data-table-actions" layout="row" layout-align="end center">
-
-    <button *ngIf="enableSearch" md-icon-button [color]="searching? 'primary': 'accent'" (click)="startSearch()">
+<div flex class="action-bar" layout="row" layout-align="end center">
+    <button *ngIf="enableSearch && !searching" md-icon-button [color]="'accent'" (click)="startSearch()">
         <md-icon>search</md-icon>
+    </button>
+    <button *ngIf="enableSearch && searching" md-icon-button [color]="'primary'" (click)="cancelSearch(undefined)">
+        <md-icon>arrow_forward</md-icon>
     </button>
     <search #search [items]="columns" flex *ngIf="enableSearch && searching" (cancel)="cancelSearch($event)"
             (search)="performSearch($event)" [placeholder]="placeholder"></search>

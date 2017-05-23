@@ -1,19 +1,16 @@
-<dialog>
-  <dialog-title *ngIf="title">
-    {{title}}
-  </dialog-title>
-  <dialog-content class="md-subhead tc-grey-700">
-    {{message}}
-  </dialog-content>
-  <dialog-actions>
+<h3 md-dialog-title *ngIf="title">{{title}}</h3>
+<div md-dialog-content>{{message}}</div>
+<div md-dialog-actions layout="row" layout-align="end center">
     <button md-button
-            #closeBtn 
+            #closeBtn
+            [color]="'accent'"
             (keydown.arrowright)="acceptBtn.focus()"
-            (click)="cancel()">{{cancelButton}}</button>
+            (click)="cancel()">{{cancelButton}}
+    </button>
     <button md-button
-            color="accent"
+            [color]="'primary'"
             #acceptBtn
             (keydown.arrowleft)="closeBtn.focus()"
-            (click)="accept()">{{acceptButton}}</button>
-  </dialog-actions>
-</dialog>
+            (click)="accept()">{{acceptButton}}
+    </button>
+</div>

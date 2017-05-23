@@ -1,7 +1,14 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MdButtonModule, MdCheckboxModule, MdIconModule, MdSelectionModule, MdTooltipModule } from '@angular/material';
+import {
+    MdButtonModule,
+    MdCheckboxModule,
+    MdIconModule,
+    MdListModule,
+    MdSelectionModule,
+    MdTooltipModule
+} from '@angular/material';
 
 import { IgCommonModule, IgPagingModule, IgSearchModule } from '@igitras/core';
 import { DataTableTemplateDirective } from './directives/data-table-template.directive';
@@ -32,6 +39,7 @@ export {
     IDataTableSelectAllEvent,
     IDataTableRowActionPerformedEvent,
 } from './data-table.component';
+
 export { DataTableService } from './services/data-table.service';
 export {
     DataTableColumnComponent,
@@ -49,6 +57,7 @@ export { DataTableTableComponent } from './data-table-table/data-table-table.com
         MdIconModule,
         MdButtonModule,
         MdSelectionModule,
+        MdListModule,
         IgCommonModule,
         IgSearchModule,
         IgPagingModule,

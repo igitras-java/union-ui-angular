@@ -6,12 +6,17 @@ export * from './common/common.module';
 /**
  * SEARCH
  */
-export * from './search/search.module'
+export * from './search/search.module';
+
+/**
+ * ACTION BAR
+ */
+export * from './action-bar/action-bar.module';
 
 /**
  * PAGING
  */
-export * from './paging/paging.module'
+export * from './paging/paging.module';
 
 /**
  * DATA TABLE

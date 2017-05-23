@@ -10,7 +10,7 @@ export const environment = {
     // API_BASE: 'http://nj02-oped-noah088.nj02.baidu.com:8701/api/v1',
     // ADMIN_API_BASE: 'http://nj02-oped-noah088.nj02.baidu.com:8701/admin-api/v1'
     ROOT: 'http://aiops.baidu.com/',
-    UI_ROOT: 'http://localhost:4200',
+    UI_ROOT: 'http://localhost:4201',
     API_BASE: 'http://aiops.baidu.com/api/v1',
     ADMIN_API_BASE: 'http://aiops.baidu.com/admin-api/v1'
 

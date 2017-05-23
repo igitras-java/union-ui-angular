@@ -7,12 +7,14 @@ import { MdDialogRef } from '@angular/material';
   styleUrls: ['./confirm-dialog.component.scss' ],
 })
 export class ConfirmDialogComponent {
+
   title: string;
   message: string;
   cancelButton: string = 'CANCEL';
   acceptButton: string = 'ACCEPT';
 
-  constructor(private _dialogRef: MdDialogRef<ConfirmDialogComponent>) {}
+  constructor(public _dialogRef: MdDialogRef<ConfirmDialogComponent>) {
+  }
 
   cancel(): void {
     this._dialogRef.close(false);

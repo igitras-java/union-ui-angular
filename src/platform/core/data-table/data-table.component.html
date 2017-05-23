@@ -1,5 +1,4 @@
 <div class="mat-table-container">
-    <data-table-actions [(columns)]="columns"></data-table-actions>
     <table data-table
            [class.mat-selectable]="isSelectable"
            [class.mat-clickable]="isClickable">
@@ -62,7 +61,7 @@
                 </ng-template>
             </td>
             <td data-table-cell class="mat-table-row-actions" *ngIf="hasAction">
-                <button md-icon-button *ngFor="let action of actions" color="{{action.color || 'accent'}}"
+                <button md-icon-button *ngFor="let action of rowActions" color="{{action.color || 'accent'}}"
                         (click)="handleRowAction(row, action)" title="{{action.title || action.name}}">
                     <md-icon>{{action.icon}}</md-icon>
                 </button>
@@ -72,7 +71,7 @@
     <div class="md-padding" *ngIf="!hasData" layout="row" layout-align="center center">
         <h3>No results to display.</h3>
     </div>
-    <pagination #pagingBar [page]="page">
+    <pagination #pagingBar [page]="page" (change)="handleNavigate($event)">
         <span pagination-label hide-xs>每页显示:</span>
         当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>
     </pagination>

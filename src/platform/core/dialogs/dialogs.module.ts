@@ -4,12 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdDialogModule, MdInputModule } from '@angular/material';
 
-import {
-    DialogActionsDirective,
-    DialogComponent,
-    DialogContentDirective,
-    DialogTitleDirective
-} from './dialog.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { PromptDialogComponent } from './prompt-dialog/prompt-dialog.component';
@@ -19,10 +13,6 @@ const DIALOGS: Type<any>[] = [
     AlertDialogComponent,
     ConfirmDialogComponent,
     PromptDialogComponent,
-    DialogComponent,
-    DialogTitleDirective,
-    DialogActionsDirective,
-    DialogContentDirective,
 ];
 
 const DIALOGS_ENTRY_COMPONENTS: Type<any>[] = [
@@ -33,8 +23,10 @@ const DIALOGS_ENTRY_COMPONENTS: Type<any>[] = [
 
 export { IAlertConfig, IConfirmConfig, IPromptConfig } from './services/dialog.service';
 export {
-    DialogService, DialogComponent, DialogTitleDirective,
-    AlertDialogComponent, ConfirmDialogComponent, PromptDialogComponent
+    DialogService,
+    AlertDialogComponent,
+    ConfirmDialogComponent,
+    PromptDialogComponent
 };
 
 @NgModule({

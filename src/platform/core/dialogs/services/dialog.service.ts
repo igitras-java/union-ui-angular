@@ -1,5 +1,5 @@
 import { Injectable, ViewContainerRef } from '@angular/core';
-import { ComponentType, MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { ComponentType, DialogRole, MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
@@ -90,6 +90,7 @@ export class DialogService {
      */
     public openConfirm(config: IConfirmConfig): MdDialogRef<ConfirmDialogComponent> {
         let dialogConfig: MdDialogConfig = this._createConfig(config);
+        dialogConfig.role = <DialogRole>'dialog';
         let dialogRef: MdDialogRef<ConfirmDialogComponent> =
             this._dialogService.open(ConfirmDialogComponent, dialogConfig);
         let confirmDialogComponent: ConfirmDialogComponent = dialogRef.componentInstance;

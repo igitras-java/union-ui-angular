@@ -1,29 +1,28 @@
-<dialog>
-  <dialog-title *ngIf="title">
-    {{title}}
-  </dialog-title>
-  <dialog-content layout="column" class="md-subhead tc-grey-700">
+<h3 md-dialog-title *ngIf="title">{{title}}</h3>
+<div md-dialog-content>
     {{message}}
     <form #form="ngForm" layout="row" novalidate flex>
-      <md-input-container flex>
-        <input mdInput
-               (keydown.enter)="$event.preventDefault(); form.valid && accept()"
-               [(ngModel)]="value"
-               name="value"
-               required/>
-      </md-input-container>
+        <md-input-container flex>
+            <input mdInput
+                   (keydown.enter)="$event.preventDefault(); form.valid && accept()"
+                   [(ngModel)]="value"
+                   name="value"
+                   required/>
+        </md-input-container>
     </form>
-  </dialog-content>
-  <dialog-actions>
+</div>
+<div md-dialog-actions layout="row" layout-align="end center">
     <button md-button
-            #closeBtn 
+            [color]="'accent'"
+            #closeBtn
             (keydown.arrowright)="acceptBtn.focus()"
-            (click)="cancel()">{{cancelButton}}</button>
+            (click)="cancel()">{{cancelButton}}
+    </button>
     <button md-button
-            color="accent"
+            [color]="'primary'"
             #acceptBtn
             (keydown.arrowleft)="closeBtn.focus()"
             [disabled]="!form.valid"
-            (click)="accept()">{{acceptButton}}</button>
-  </dialog-actions>
-</dialog>
+            (click)="accept()">{{acceptButton}}
+    </button>
+</div>

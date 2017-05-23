@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { CustomMaterialModule } from '../custom-material.module';
+import { IgSearchModule } from '@igitras/core';
 
 @NgModule({
     imports: [
         CommonModule,
         HomeRoutingModule,
         SharedModule,
-        CustomMaterialModule
+        CustomMaterialModule,
+        IgSearchModule
     ],
     declarations: [HomeComponent]
 })

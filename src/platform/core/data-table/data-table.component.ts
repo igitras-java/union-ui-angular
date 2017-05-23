@@ -22,7 +22,7 @@ import { DOWN_ARROW, ENTER, SPACE, UP_ARROW } from '@angular/material';
 import { DataTableRowComponent } from './data-table-row/data-table-row.component';
 import { IDataTableSortChangeEvent } from './data-table-column/data-table-column.component';
 import { DataTableTemplateDirective } from './directives/data-table-template.directive';
-import { Direction, IFieldDescriptor, IPage } from '@igitras/core';
+import { Direction, IFieldDescriptor, IPage, IPageChangeEvent, ISearchItem } from '@igitras/core';
 
 const noop: any = () => {
     // empty method
@@ -96,7 +96,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     private _lastArrowKeyDirection: Direction;
 
     /** action */
-    private _actions: IDataTableRowAction[];
+    private _rowActions: IDataTableRowAction[];
 
     /** template fetching support */
     private _templateMap: Map<string, TemplateRef<any>> = new Map<string, TemplateRef<any>>();
@@ -151,16 +151,16 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     }
 
     get hasAction(): boolean {
-        return this._actions && this._actions.length > 0;
+        return this._rowActions && this._rowActions.length > 0;
     }
 
-    @Input("actions")
-    set actions(actions: IDataTableRowAction[]) {
-        this._actions = actions;
+    @Input("rowActions")
+    set rowActions(rowActions: IDataTableRowAction[]) {
+        this._rowActions = rowActions;
     }
 
-    get actions(): IDataTableRowAction[] {
-        return this._actions || [];
+    get rowActions(): IDataTableRowAction[] {
+        return this._rowActions || [];
     }
 
     /**
@@ -295,14 +295,6 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     }
 
     /**
-     * sortChange?: function
-     * Event emitted when the column headers are clicked. [sortable] needs to be enabled.
-     * Emits an [IDataTableSortChangeEvent] implemented object.
-     */
-    @Output('sortChange') onSortChange: EventEmitter<IDataTableSortChangeEvent> =
-        new EventEmitter<IDataTableSortChangeEvent>();
-
-    /**
      * rowSelect?: function
      * Event emitted when a row is selected/deselected. [selectable] needs to be enabled.
      * Emits an [IDataTableSelectEvent] implemented object.
@@ -325,12 +317,25 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
         new EventEmitter<IDataTableSelectAllEvent>();
 
     /**
+     * sortChange?: function
+     * Event emitted when the column headers are clicked. [sortable] needs to be enabled.
+     * Emits an [IDataTableSortChangeEvent] implemented object.
+     */
+    @Output('sortChange') onSortChange: EventEmitter<IDataTableSortChangeEvent> =
+        new EventEmitter<IDataTableSortChangeEvent>();
+
+    /**
      * rowActionPerform?: function
      * Event emitted when a row action is performed.
      * @type {EventEmitter<IDataTableRowActionPerformedEvent>}
      */
     @Output('rowActionPerform') onRowActionPerform: EventEmitter<IDataTableRowActionPerformedEvent> =
         new EventEmitter<IDataTableRowActionPerformedEvent>();
+
+    @Output('searchPerform') onSearchPerform: EventEmitter<ISearchItem[] | string>
+        = new EventEmitter<ISearchItem[] | string>();
+
+    @Output('navigatePerform') onNavigatePerform: EventEmitter<IPageChangeEvent> = new EventEmitter<IPageChangeEvent>();
 
     constructor(@Optional() @Inject(DOCUMENT) private _document: any,
                 private _changeDetectorRef: ChangeDetectorRef) {
@@ -497,6 +502,14 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
             row: row,
             action: action
         });
+    }
+
+    handleSearch(search: ISearchItem[] | string) {
+        this.onSearchPerform.emit(search);
+    }
+
+    handleNavigate(navigate: IPageChangeEvent) {
+        this.onNavigatePerform.emit(navigate);
     }
 
     /**

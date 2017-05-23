@@ -1,5 +1,12 @@
-<section>
-    <div class="container">
+<md-card>
+    <md-card-title>
+        <div layout="row" layout-align="space-between end">
+            <span>首页</span>
+            <ig-action-bar flex [enableSetting]="true" [columns]="columns"></ig-action-bar>
+        </div>
+    </md-card-title>
+    <md-divider></md-divider>
+    <md-card-content>
         <data-table
                 #dataTable
                 [page]="pageData"
@@ -9,17 +16,19 @@
                 [multiple]="multiple"
                 [sortable]="true"
                 [sortBy]="sortBy"
-                [actions]="actions"
                 [(ngModel)]="selectedRows"
                 [sortOrder]="sortOrder"
                 (sortChange)="sort($event)"
                 (rowActionPerform)="performAction($event)"
                 (rowClick)="showAlert($event)">
         </data-table>
-        <!--<pagination #pagingBar [page]="dataTable.page">-->
-            <!--<span pagination-label hide-xs>每页显示:</span>-->
-            <!--当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>-->
-        <!--</pagination>-->
+    </md-card-content>
+</md-card>
+<div class="container">
 
-    </div>
-</section>
+    <!--<pagination #pagingBar [page]="dataTable.page">-->
+    <!--<span pagination-label hide-xs>每页显示:</span>-->
+    <!--当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>-->
+    <!--</pagination>-->
+
+</div>

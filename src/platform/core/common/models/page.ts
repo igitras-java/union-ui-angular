@@ -7,17 +7,13 @@ export interface IPage {
     totalElements: number;
     last: boolean;
     content: any[];
-    sort: ISort;
+    sort: IOrder[];
 }
 
 export interface IPageable {
     pageNumber: number;
     pageSize: number;
-    sort: ISort;
-}
-
-export interface ISort {
-    orders: IOrder[];
+    sort: IOrder[];
 }
 
 export interface IOrder {

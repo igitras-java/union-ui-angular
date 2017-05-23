@@ -1,0 +1,47 @@
+@import "../common/styles/theme-functions";
+
+@mixin dialog-theme($theme) {
+    $primary: map-get($theme, primary);
+
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    confirm-dialog,
+    alert-dialog,
+    confirm-action,
+    prompt-dialog {
+        //.dialog-title {
+        //    margin-top: 0;
+        //    margin-bottom: 20px;
+        //}
+        //
+        //.dialog-content {
+        //    margin-bottom: 16px;
+        //}
+        //
+        //.dialog-actions {
+        //    position: relative;
+        //    top: 16px;
+        //    left: 16px;
+        //    /deep/ [dir='rtl'] & {
+        //        right: 16px;
+        //        left: auto;
+        //    }
+        //
+        //    ///deep/ button {
+        //    //    text-transform: uppercase;
+        //    //    margin-left: 8px;
+        //    //    [dir='rtl'] & {
+        //    //        margin-right: 8px;
+        //    //        margin-left: inherit;
+        //    //    }
+        //    //    padding-left: 8px;
+        //    //    padding-right: 8px;
+        //    //    min-width: 64px;
+        //    //}
+        //}
+    }
+
+}

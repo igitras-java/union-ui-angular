@@ -3,6 +3,7 @@
 @import '../chips/chips-theme';
 @import '../search/search-theme';
 @import '../paging/paging-theme';
+@import '../dialogs/dialog-theme';
 
 // Create a theme.
 @mixin ig-theme($theme) {
@@ -10,5 +11,6 @@
     @include data-table-theme($theme);
     @include chips-theme($theme);
     @include search-theme($theme);
-    @include paging-theme($theme)
+    @include paging-theme($theme);
+    @include dialog-theme($theme);
 }

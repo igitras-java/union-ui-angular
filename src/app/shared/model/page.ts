@@ -1,8 +1,8 @@
 import { Exclude, Type } from 'class-transformer';
-import { IPage, ISort } from '@igitras/core';
+import { IOrder, IPage } from '@igitras/core';
 
 export class Page<T> implements IPage {
-    sort: ISort;
+    sort: IOrder[];
     numberOfElements: number = 0;
     first: boolean = true;
     number: number = 0;

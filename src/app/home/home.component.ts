@@ -18,7 +18,7 @@ const DECIMAL_FORMAT: (v: any) => any = (v: number) => v.toFixed(2);
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 

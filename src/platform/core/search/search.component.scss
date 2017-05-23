@@ -35,8 +35,9 @@
 
 .mat-input-underline {
     position: relative;
-    height: 1px;
+    //height: 1px;
     width: 100%;
+    margin-top: 1px;
 
     &.mat-disabled {
         border-top: 0;
