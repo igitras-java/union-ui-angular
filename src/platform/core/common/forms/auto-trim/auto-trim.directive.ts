@@ -4,7 +4,7 @@ import { NgModel } from '@angular/forms';
 @Directive({
     selector: '[autoTrim]',
 })
-export class AutoTrimDirective {
+export class IgAutoTrimDirective {
 
     constructor(@Optional() @Host() private _model: NgModel) {
     }

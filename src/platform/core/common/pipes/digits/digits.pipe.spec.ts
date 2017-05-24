@@ -1,11 +1,11 @@
-import { DigitsPipe } from './digits.pipe';
+import { IgDigitsPipe } from './digits.pipe';
 
-describe('DigitsPipe', () => {
-    let pipe: DigitsPipe;
-    let l10nPipe: DigitsPipe;
+describe('IgDigitsPipe', () => {
+    let pipe: IgDigitsPipe;
+    let l10nPipe: IgDigitsPipe;
     beforeEach(() => {
-        pipe = new DigitsPipe();
-        l10nPipe = new DigitsPipe('es');
+        pipe = new IgDigitsPipe();
+        l10nPipe = new IgDigitsPipe('es');
     });
 
     it('should return with an empty or invalid input', () => {

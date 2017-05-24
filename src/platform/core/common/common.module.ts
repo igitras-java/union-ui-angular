@@ -1,24 +1,24 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToggleDirective } from './animations/toggle/toggle.directive';
-import { FadeDirective } from './animations/fade/fade.directive';
+import { IgToggleDirective } from './animations/toggle/toggle.directive';
+import { IgFadeDirective } from './animations/fade/fade.directive';
 /**
  * FORMS
  */
 // Form Directives
-import { AutoTrimDirective } from './forms/auto-trim/auto-trim.directive';
+import { IgAutoTrimDirective } from './forms/auto-trim/auto-trim.directive';
 // Validators
 import { MinValidator } from './forms/validators/min/min.validator';
 import { MaxValidator } from './forms/validators/max/max.validator';
 /**
  * PIPES
  */
-import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
-import { TimeDifferencePipe } from './pipes/time-difference/time-difference.pipe';
-import { BytesPipe } from './pipes/bytes/bytes.pipe';
-import { DigitsPipe } from './pipes/digits/digits.pipe';
-import { TruncatePipe } from './pipes/truncate/truncate.pipe';
-import { RouterPathService } from './services/router.path.service';
+import { IgTimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
+import { IgTimeDifferencePipe } from './pipes/time-difference/time-difference.pipe';
+import { IgBytesPipe } from './pipes/bytes/bytes.pipe';
+import { IgDigitsPipe } from './pipes/digits/digits.pipe';
+import { IgTruncatePipe } from './pipes/truncate/truncate.pipe';
+import { IgRouterPathService } from './services/router.path.service';
 import { FormsModule } from '@angular/forms';
 /**
  * MODELS
@@ -32,20 +32,20 @@ import { MdListModule } from '@angular/material';
  */
 
 const ANIMATIONS: Type<any>[] = [
-    ToggleDirective,
-    FadeDirective,
+    IgToggleDirective,
+    IgFadeDirective,
 ];
 
-export { ToggleDirective, FadeDirective };
-export { CollapseAnimation } from './animations/collapse/collapse.animation';
-export { FadeInOutAnimation } from './animations/fade/fadeInOut.animation';
+export { IgToggleDirective, IgFadeDirective };
+export { IgCollapseAnimation } from './animations/collapse/collapse.animation';
+export { IgFadeInOutAnimation } from './animations/fade/fadeInOut.animation';
 
 
 const FORMS: Type<any>[] = [
-    AutoTrimDirective,
+    IgAutoTrimDirective,
 ];
 
-export { AutoTrimDirective };
+export { IgAutoTrimDirective };
 
 const VALIDATORS: Type<any>[] = [
     MinValidator,
@@ -56,11 +56,11 @@ export { MinValidator, MaxValidator };
 export { IgValidators } from './forms/validators/validators';
 
 const PIPES: Type<any>[] = [
-    TimeAgoPipe,
-    TimeDifferencePipe,
-    BytesPipe,
-    DigitsPipe,
-    TruncatePipe,
+    IgTimeAgoPipe,
+    IgTimeDifferencePipe,
+    IgBytesPipe,
+    IgDigitsPipe,
+    IgTruncatePipe,
 ];
 
 export {
@@ -95,7 +95,7 @@ export {
         VALIDATORS,
     ],
     providers: [
-        RouterPathService,
+        IgRouterPathService,
     ],
 })
 export class IgCommonModule {

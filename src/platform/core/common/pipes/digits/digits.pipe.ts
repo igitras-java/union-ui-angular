@@ -5,7 +5,7 @@ import { DecimalPipe } from '@angular/common';
   name: 'digits',
 })
 
-export class DigitsPipe implements PipeTransform {
+export class IgDigitsPipe implements PipeTransform {
 
   private _decimalPipe: DecimalPipe;
 

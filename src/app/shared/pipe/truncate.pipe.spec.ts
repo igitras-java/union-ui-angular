@@ -2,7 +2,7 @@
 
 import { TruncatePipe } from './truncate.pipe';
 
-describe('TruncatePipe', () => {
+describe('IgTruncatePipe', () => {
     it('create an instance', () => {
         let pipe = new TruncatePipe();
         expect(pipe).toBeTruthy();

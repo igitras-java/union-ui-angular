@@ -1,13 +1,13 @@
-import { TruncatePipe } from './truncate.pipe';
+import { IgTruncatePipe } from './truncate.pipe';
 
-describe('TruncatePipe', () => {
-    let pipe: TruncatePipe;
+describe('IgTruncatePipe', () => {
+    let pipe: IgTruncatePipe;
     let start: number = Date.now();
     let spaces: string = 'asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf as';
     let nospaces: string = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz';
 
     beforeEach(() => {
-        pipe = new TruncatePipe();
+        pipe = new IgTruncatePipe();
     });
 
     it('should return blank with an invalid input', () => {

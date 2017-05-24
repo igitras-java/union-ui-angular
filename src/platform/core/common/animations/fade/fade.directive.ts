@@ -20,7 +20,7 @@ import { animate } from '@angular/animations';
 @Directive({
     selector: '[fade]',
 })
-export class FadeDirective {
+export class IgFadeDirective {
 
     private _state: boolean;
     private _defaultOpacity: string;

@@ -1,0 +1,55 @@
+# ig-notification-count
+
+`ig-notification-count` element renders a number of notifications.
+
+## API Summary
+
+Properties:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `color?` | `"primary" | "accent" | "warn"` | Sets the theme color of the notification tip. Defaults to 'warn'
+| `notifications?` | `number | boolean` | Number for the notification count. Shows number if the input is a positive number or its no count state if boolean 'true'
+| `positionX?` | `IgNotificationCountPositionX or "before" | "after" | "center"` | Sets the X position of the notification tip. Defaults to "after" if it has content, else 'center'.
+| `positionY?` | `IgNotificationCountPositionY or "top" | "bottom" | "center"` | Sets the Y position of the notification tip. Defaults to "top" if it has content, else 'center'.
+
+## Setup
+
+Import the [CovalentNotificationsModule] in your NgModule:
+
+```typescript
+import { CovalentNotificationsModule } from '@covalent/core';
+@NgModule({
+  imports: [
+    CovalentNotificationsModule,
+    ...
+  ],
+  ...
+})
+export class MyModule {}
+```
+
+## Usage
+
+Example for HTML count usage:
+
+ ```html
+<ig-notification-count positionX="after" positionY="top" [notifications]="1">
+  <md-icon>notifications<md-icon>
+</ig-notification-count>
+ ```
+
+ Example for HTML no count usage:
+
+ ```html
+<ig-notification-count positionX="after" positionY="top" [notifications]="true">
+  <md-icon>notifications<md-icon>
+</ig-notification-count>
+ ```
+
+Example for HTML stand alone count usage:
+
+ ```html
+<ig-notification-count positionX="center" positionY="center" [notifications]="1">
+</ig-notification-count>
+ ```

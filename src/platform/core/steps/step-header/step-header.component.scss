@@ -1,0 +1,83 @@
+$step-circle: 24px;
+
+.ig-step-header {
+  position: relative;
+  outline: none;
+  &:focus,
+  &:hover {
+    cursor: pointer;
+  }
+  &.mat-disabled {
+    background: none;
+    cursor: auto;
+  }
+  .ig-step-header-content {
+    height: 72px;
+  }
+  md-icon.ig-edit-icon {
+    margin: 0 8px;
+  }
+  md-icon {
+    &.mat-warn {
+      font-size: $step-circle;
+      height: $step-circle;
+      width: $step-circle;
+    }
+    &.mat-complete {
+      position: relative;
+      left: -2px;
+      top: 2px;
+      font-size: $step-circle + 4;
+      height: $step-circle;
+      width: $step-circle;
+    }
+  }
+  .ig-circle {
+    height: $step-circle;
+    width: $step-circle;
+    line-height: $step-circle;
+    border-radius: 99%;
+    text-align: center;
+    flex: none;
+    & md-icon {
+      margin-top: 2px;
+      font-weight: bold;
+    }
+  }
+  .ig-triangle {
+    & > md-icon {
+      font-size: 25px;
+    }
+  }
+  .ig-complete {
+    font-size: 0;
+  }
+  .ig-circle,
+  .ig-triangle,
+  .ig-complete {
+    /deep/ :not([dir='rtl']) & {
+      margin: {
+        left: 8px;
+        right: 0px;
+      }
+    }
+    /deep/ [dir='rtl'] & {
+      margin: {
+        left: 0px;
+        right: 8px;
+      }
+    }
+  }
+  .ig-circle,
+  .ig-complete {
+    font-size: 14px;
+  }
+  .ig-step-label-wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .ig-step-sublabel {
+    line-height: 14px;
+    font-weight: normal;
+  }
+}

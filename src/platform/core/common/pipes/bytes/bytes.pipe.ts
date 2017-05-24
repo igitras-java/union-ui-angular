@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'bytes',
 })
 
-export class BytesPipe implements PipeTransform {
+export class IgBytesPipe implements PipeTransform {
     /* `bytes` needs to be `any` or TypeScript complains
      Tried both `number` and `number | string` */
     transform(bytes: any, precision: number = 2): string {

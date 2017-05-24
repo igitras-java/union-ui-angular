@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
     name: 'timeAgo',
 })
-export class TimeAgoPipe implements PipeTransform {
+export class IgTimeAgoPipe implements PipeTransform {
     transform(time: any, reference: any): string {
         // Convert time to date object if not already
         time = new Date(time);

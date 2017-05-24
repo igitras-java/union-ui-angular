@@ -1,6 +1,6 @@
-import { TimeAgoPipe } from '@igitras/core';
+import { IgTimeAgoPipe } from '@igitras/core';
 
-describe('TimeAgoPipe', () => {
+describe('IgTimeAgoPipe', () => {
     let pipe: TimeAgoPipe;
     let time: number = Date.now();
 

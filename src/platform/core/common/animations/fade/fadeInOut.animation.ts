@@ -1,7 +1,7 @@
 import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 /**
- * Function FadeInOutAnimation
+ * Function IgFadeInOutAnimation
  *
  * params:
  * * duration: Duration of animation in miliseconds. Defaults to 150 ms.
@@ -10,7 +10,7 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
  *
  * usage: [@fadeInOut]="true|false"
  */
-export function FadeInOutAnimation(duration: number = 150): AnimationTriggerMetadata {
+export function IgFadeInOutAnimation(duration: number = 150): AnimationTriggerMetadata {
     return trigger('fadeInOut', [
         state('0', style({
             opacity: '0',

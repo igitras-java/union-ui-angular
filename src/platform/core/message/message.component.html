@@ -1,0 +1,12 @@
+<div igMessageContainer></div>
+<ng-template>
+  <div class="pad-left pad-right ig-message-wrapper" layout="row" layout-align="center center">
+    <md-icon class="push-right">{{icon}}</md-icon>
+    <div>
+      <div *ngIf="label" class="ig-message-label md-body-2">{{label}}</div>
+      <div *ngIf="sublabel" class="ig-message-sublabel md-body-1">{{sublabel}}</div>
+    </div>
+    <span flex></span>
+    <ng-content select="[ig-message-actions]"></ng-content>
+  </div>
+</ng-template>

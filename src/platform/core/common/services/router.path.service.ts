@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
 
 @Injectable()
-export class RouterPathService {
+export class IgRouterPathService {
     private static _previousRoute: string = '/';
 
     constructor(private _router: Router) {
@@ -10,7 +10,7 @@ export class RouterPathService {
             .filter((e: any) => e instanceof RoutesRecognized)
             .pairwise()
             .subscribe((e: any[]) => {
-                RouterPathService._previousRoute = e[0].urlAfterRedirects;
+                IgRouterPathService._previousRoute = e[0].urlAfterRedirects;
             });
     }
 
@@ -19,6 +19,6 @@ export class RouterPathService {
      * good for use in a "back button"
      */
     getPreviousRoute(): string {
-        return RouterPathService._previousRoute;
+        return IgRouterPathService._previousRoute;
     }
 }

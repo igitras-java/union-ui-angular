@@ -1,12 +1,12 @@
-import { TimeDifferencePipe } from './time-difference.pipe';
+import { IgTimeDifferencePipe } from './time-difference.pipe';
 
-describe('TimeDifferencePipe', () => {
-    let pipe: TimeDifferencePipe;
+describe('IgTimeDifferencePipe', () => {
+    let pipe: IgTimeDifferencePipe;
     let start: number = Date.now();
     let end: number = new Date(start).getTime();
 
     beforeEach(() => {
-        pipe = new TimeDifferencePipe();
+        pipe = new IgTimeDifferencePipe();
     });
 
     it('should return blank with an invalid date', () => {

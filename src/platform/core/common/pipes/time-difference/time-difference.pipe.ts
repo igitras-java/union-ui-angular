@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'timeDifference',
 })
 
-export class TimeDifferencePipe implements PipeTransform {
+export class IgTimeDifferencePipe implements PipeTransform {
     transform(start: any, end: any): string {
         let startTime: Date = new Date(start);
         let endTime: Date;

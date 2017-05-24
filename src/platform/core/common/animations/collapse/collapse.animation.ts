@@ -1,7 +1,7 @@
 import { animate, AnimationTriggerMetadata, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 
 /**
- * Function CollapseAnimation
+ * Function IgCollapseAnimation
  *
  * params:
  * * duration: Duration of animation in miliseconds. Defaults to 120 ms.
@@ -10,7 +10,7 @@ import { animate, AnimationTriggerMetadata, AUTO_STYLE, state, style, transition
  *
  * usage: [@collapse]="true|false"
  */
-export function CollapseAnimation(duration: number = 120): AnimationTriggerMetadata {
+export function IgCollapseAnimation(duration: number = 120): AnimationTriggerMetadata {
     return trigger('collapse', [
         state('1', style({
             height: '0',

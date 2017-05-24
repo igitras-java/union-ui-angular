@@ -1,0 +1,70 @@
+@import '../common/styles/variables';
+@import '../common/styles/elevation';
+@import '../common/styles/theme-functions';
+
+@mixin ig-steps-theme($theme) {
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  ig-steps {
+    .ig-steps-header {
+      @include mat-elevation(1);
+    }
+    .ig-step-content,
+    .ig-step-summary,
+    .ig-step-actions {
+      margin: $margin;
+    }
+    // steps
+    .ig-horizontal-line {
+      border-bottom-color: mat-color($foreground, divider);
+    }
+    .ig-vertical-line {
+      border-left-color: mat-color($foreground, divider);
+    }
+    // header
+    .ig-step-header {
+      &:focus,
+      &:hover {
+        background: mat-color($background, 'hover');
+      }
+      .ig-step-label-wrapper {
+        .md-caption {
+          color: mat-color($foreground, secondary-text);
+        }
+        &.mat-disabled {
+          &, & * {
+            color: mat-color($foreground, disabled);
+          }
+        }
+        &.mat-warn {
+          &, & * {
+            color: mat-color($warn);
+          }
+        }
+      }
+      .mat-complete {
+        color: mat-color($accent);
+      }
+    }
+    .ig-circle {
+      color: mat-color($background, card);
+      &.mat-active {
+        background-color: mat-color($accent);
+      }
+      &.mat-inactive {
+        background-color: mat-color($foreground, disabled);
+      }
+      & md-icon {
+        fill: mat-color($foreground, text);
+      }
+    }
+    .ig-triangle {
+      color: mat-color($warn);
+    }
+    .ig-edit-icon {
+      color: mat-color($foreground, icon);
+    }
+  }
+}

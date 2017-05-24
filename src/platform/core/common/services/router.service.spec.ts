@@ -2,7 +2,7 @@ import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RouterPathService } from './router.path.service';
+import { IgRouterPathService } from './router.path.service';
 
 @Component({
     selector: 'fake',
@@ -10,7 +10,7 @@ import { RouterPathService } from './router.path.service';
         <router-outlet></router-outlet>
         <div>fake</div>`,
 })
-export class FakeComponent {
+export class IgFakeComponent {
 }
 
 describe('Service: RouterPath', () => {
@@ -19,24 +19,24 @@ describe('Service: RouterPath', () => {
         TestBed.configureTestingModule({
             imports: [
                 RouterTestingModule.withRoutes([
-                    {path: '', component: FakeComponent},
-                    {path: 'foo', component: FakeComponent},
+                    {path: '', component: IgFakeComponent},
+                    {path: 'foo', component: IgFakeComponent},
                 ]),
             ],
             declarations: [
-                FakeComponent,
+                IgFakeComponent,
             ],
             providers: [
-                RouterPathService,
+                IgRouterPathService,
             ],
         });
         TestBed.compileComponents();
     }));
 
     it('route to new path and check that getPreviousRoute was set correctly',
-        async(inject([Router, RouterPathService],
-            (router: Router, routerPathService: RouterPathService) => {
-                const fixture: ComponentFixture<FakeComponent> = TestBed.createComponent(FakeComponent);
+        async(inject([Router, IgRouterPathService],
+            (router: Router, routerPathService: IgRouterPathService) => {
+                const fixture: ComponentFixture<IgFakeComponent> = TestBed.createComponent(IgFakeComponent);
 
                 // navigate to /foo then navigate to /
                 // which will set previous route to /foo

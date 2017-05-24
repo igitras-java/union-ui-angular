@@ -1,10 +1,10 @@
-import { BytesPipe } from './bytes.pipe';
+import { IgBytesPipe } from './bytes.pipe';
 
-describe('BytesPipe', () => {
-    let pipe: BytesPipe;
+describe('IgBytesPipe', () => {
+    let pipe: IgBytesPipe;
 
     beforeEach(() => {
-        pipe = new BytesPipe();
+        pipe = new IgBytesPipe();
     });
 
     it('should return with an empty or invalid input', () => {

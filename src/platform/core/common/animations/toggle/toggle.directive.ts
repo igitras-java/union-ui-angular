@@ -18,7 +18,7 @@ import { animate } from '@angular/animations';
 @Directive({
     selector: '[toggle]',
 })
-export class ToggleDirective {
+export class IgToggleDirective {
 
     private _state: boolean;
     private _defaultOverflow: string;

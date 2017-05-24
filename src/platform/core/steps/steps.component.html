@@ -1,0 +1,40 @@
+<div *ngIf="isHorizontal()" class="ig-steps-header" layout="row" title>
+  <ng-template let-step let-index="index" let-last="last" ngFor [ngForOf]="steps">
+    <ig-step-header class="ig-step-horizontal-header"
+                    (keydown.enter)="step.toggle()"
+                    [number]="index + 1"
+                    [active]="step.active" 
+                    [disabled]="step.disabled" 
+                    [state]="step.state"
+                    (click)="step.toggle()">
+      <ng-template ig-step-header-label [cdkPortalHost]="step.stepLabel"></ng-template>
+      <ng-template ig-step-header-label [ngIf]="!step.stepLabel">{{step.label}}</ng-template>
+      <ng-template ig-step-header-sublabel [ngIf]="true">{{step.sublabel | truncate:30}}</ng-template>
+    </ig-step-header>
+    <span *ngIf="!last" class="ig-horizontal-line" flex></span>
+  </ng-template>
+</div>
+<div *ngFor="let step of steps; let index = index; let last = last" class="ig-step" layout="column">
+  <ig-step-header class="ig-step-vertical-header"
+                  (keydown.enter)="step.toggle()"
+                  [number]="index + 1"
+                  [active]="step.active" 
+                  [disabled]="step.disabled" 
+                  [state]="step.state"
+                  (click)="step.toggle()"
+                  *ngIf="isVertical()">
+    <ng-template ig-step-header-label [cdkPortalHost]="step.stepLabel"></ng-template>
+    <ng-template ig-step-header-label [ngIf]="!step.stepLabel">{{step.label}}</ng-template>
+    <ng-template ig-step-header-sublabel [ngIf]="true">{{step.sublabel}}</ng-template>
+  </ig-step-header>
+  <ng-template [ngIf]="isVertical() || step.active || (!areStepsActive() && prevStep === step)">
+    <ig-step-body [active]="step.active" [state]="step.state">
+      <div *ngIf="isVertical()" class="ig-line-wrapper">
+        <div *ngIf="!last" class="ig-vertical-line"></div>
+      </div>
+      <ng-template ig-step-body-content [cdkPortalHost]="step.stepContent"></ng-template>
+      <ng-template ig-step-body-actions [cdkPortalHost]="step.stepActions"></ng-template>
+      <ng-template ig-step-body-summary [cdkPortalHost]="step.stepSummary"></ng-template>
+    </ig-step-body>
+  </ng-template>
+</div>
