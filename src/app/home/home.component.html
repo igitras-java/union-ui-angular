@@ -7,9 +7,9 @@
     </md-card-title>
     <md-divider></md-divider>
     <md-card-content>
-        <data-table
+        <ig-data-table
                 #dataTable
-                [page]="pageData"
+                [content]="data"
                 [columns]="columns"
                 [selectable]="selectable"
                 [clickable]="clickable"
@@ -21,14 +21,7 @@
                 (sortChange)="sort($event)"
                 (rowActionPerform)="performAction($event)"
                 (rowClick)="showAlert($event)">
-        </data-table>
+        </ig-data-table>
     </md-card-content>
 </md-card>
-<div class="container">
-
-    <!--<pagination #pagingBar [page]="dataTable.page">-->
-    <!--<span pagination-label hide-xs>每页显示:</span>-->
-    <!--当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>-->
-    <!--</pagination>-->
-
-</div>
+<ig-pagination-table-view [pageData]="pageData" [fields]="columns"></ig-pagination-table-view>

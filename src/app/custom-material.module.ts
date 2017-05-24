@@ -8,7 +8,8 @@ import {
     MdCoreModule,
     MdDialogModule,
     MdIconModule,
-    MdInputModule, MdListModule,
+    MdInputModule,
+    MdListModule,
     MdMenuModule,
     MdProgressBarModule,
     MdSelectModule,
@@ -16,7 +17,8 @@ import {
     MdToolbarModule,
     MdTooltipModule
 } from '@angular/material';
-import { IgActionBarModule, IgCommonModule, IgDataTableModule, IgPagingModule, IgSearchModule } from '@igitras/core';
+import { IgActionBarModule, IgCommonModule, IgDataTableModule, IgDialogsModule, IgSearchModule } from '@igitras/core';
+import { IgPaginationTableViewModule } from '@igitras/business';
 
 @NgModule({
     imports: [
@@ -37,11 +39,12 @@ import { IgActionBarModule, IgCommonModule, IgDataTableModule, IgPagingModule, I
         MdAutocompleteModule,
         MdListModule,
 
-        IgActionBarModule,
         IgCommonModule,
         IgDataTableModule,
-        IgPagingModule,
-        IgSearchModule
+        IgDialogsModule,
+        IgSearchModule,
+        IgActionBarModule,
+        IgPaginationTableViewModule
     ],
     exports: [
         MdCoreModule,
@@ -63,9 +66,10 @@ import { IgActionBarModule, IgCommonModule, IgDataTableModule, IgPagingModule, I
 
         IgCommonModule,
         IgDataTableModule,
+        IgDialogsModule,
+        IgSearchModule,
         IgActionBarModule,
-        IgPagingModule,
-        IgSearchModule
+        IgPaginationTableViewModule
     ]
 })
 export class CustomMaterialModule {

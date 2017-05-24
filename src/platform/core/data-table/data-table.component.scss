@@ -9,14 +9,14 @@ $checkbox-size: 18px;
 }
 
 
-table.data-table {
-    &.mat-selectable tbody > tr.data-table-row {
+table.ig-data-table {
+    &.mat-selectable tbody > tr.ig-data-table-row {
         transition: background-color 0.2s;
     }
 
-    &.mat-selectable .data-table-column,
-    &.mat-selectable th.data-table-column,
-    &.mat-selectable td.data-table-cell {
+    &.mat-selectable .ig-data-table-column,
+    &.mat-selectable th.ig-data-table-column,
+    &.mat-selectable td.ig-data-table-cell {
         &:first-child {
             width: 20px;
             padding: 0 24px;

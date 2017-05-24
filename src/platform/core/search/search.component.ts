@@ -32,7 +32,7 @@ export interface ISearchItem {
 
 @Component({
     providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
-    selector: 'search',
+    selector: 'ig-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
@@ -129,7 +129,7 @@ export class SearchComponent implements Focusable, DoCheck, OnInit {
     }
 
     ngDoCheck(): void {
-        // Throw onChange event only if array changes size.
+        // Throw onNavigate event only if array changes size.
         if (this._value && this._value.length !== this._length) {
             this._length = this._value.length;
             this.onChange(this._value);
@@ -212,6 +212,7 @@ export class SearchComponent implements Focusable, DoCheck, OnInit {
         } else {
             this.search.emit(this._inputValue);
         }
+        console.log("handle search2")
     }
 
     handleCancelled(): void {

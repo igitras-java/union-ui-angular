@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'prompt-dialog',
+  selector: 'ig-prompt-dialog',
   templateUrl: './prompt-dialog.component.html',
   styleUrls: ['./prompt-dialog.component.scss' ],
 })

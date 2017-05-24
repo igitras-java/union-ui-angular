@@ -1,14 +1,14 @@
 import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, Renderer2 } from '@angular/core';
 import { Direction } from '@igitras/core';
 
-export interface IDataTableSortChangeEvent {
+export interface IDataTableSortChangedEvent {
     order: Direction;
     name: string;
 }
 
 @Component({
     /* tslint:disable-next-line */
-    selector: 'th[data-table-column]',
+    selector: 'th[ig-data-table-column]',
     styleUrls: ['./data-table-column.component.scss'],
     templateUrl: './data-table-column.component.html',
 })
@@ -62,10 +62,10 @@ export class DataTableColumnComponent {
     /**
      * sortChange?: function
      * Event emitted when the column headers are clicked. [sortable] needs to be enabled.
-     * Emits an [IDataTableSortChangeEvent] implemented object.
+     * Emits an [IDataTableSortChangedEvent] implemented object.
      */
-    @Output('sortChange') onSortChange: EventEmitter<IDataTableSortChangeEvent> =
-        new EventEmitter<IDataTableSortChangeEvent>();
+    @Output('sortChange') onSortChange: EventEmitter<IDataTableSortChangedEvent> =
+        new EventEmitter<IDataTableSortChangedEvent>();
 
     @HostBinding('class.mat-clickable')
     get bindClickable(): boolean {
@@ -88,7 +88,7 @@ export class DataTableColumnComponent {
     }
 
     constructor(private _elementRef: ElementRef, private _renderer: Renderer2) {
-        this._renderer.addClass(this._elementRef.nativeElement, 'data-table-column');
+        this._renderer.addClass(this._elementRef.nativeElement, 'ig-data-table-column');
     }
 
     handleSortBy(): void {

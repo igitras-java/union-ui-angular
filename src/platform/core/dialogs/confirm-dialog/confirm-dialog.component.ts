@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'confirm-dialog',
+  selector: 'ig-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss' ],
 })

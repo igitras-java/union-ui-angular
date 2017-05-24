@@ -42,20 +42,22 @@ export class ActionBarComponent {
         return this._btnActions;
     }
 
-    @Output("action") onAction: EventEmitter<IAction> = new EventEmitter<IAction>();
-    @Output("searchAction") onSearchAction: EventEmitter<ISearchItem[] | string>
+    @Output("onPerformAction") onPerformAction: EventEmitter<IAction> = new EventEmitter<IAction>();
+    @Output("onSearch") onSearch: EventEmitter<ISearchItem[] | string>
         = new EventEmitter<ISearchItem[] | string>();
 
     constructor() {
     }
 
     performAction(action: IAction) {
-        this.onAction.emit(action);
+        this.onPerformAction.emit(action);
     }
 
     performSearch(searchItems: ISearchItem[] | string) {
-        this.onSearchAction.emit(searchItems);
+        console.log("handle search3")
+        this.onSearch.emit(searchItems);
         console.log(searchItems);
+        console.log("handle search4")
     }
 
     cancelSearch($event: any) {

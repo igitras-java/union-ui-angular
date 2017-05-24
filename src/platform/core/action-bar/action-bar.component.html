@@ -5,8 +5,8 @@
     <button *ngIf="enableSearch && searching" md-icon-button [color]="'primary'" (click)="cancelSearch(undefined)">
         <md-icon>arrow_forward</md-icon>
     </button>
-    <search #search [items]="columns" flex *ngIf="enableSearch && searching" (cancel)="cancelSearch($event)"
-            (search)="performSearch($event)" [placeholder]="placeholder"></search>
+    <ig-search #search [items]="columns" flex *ngIf="enableSearch && searching" (cancel)="cancelSearch($event)"
+            (search)="performSearch($event)" [placeholder]="placeholder"></ig-search>
     <button md-icon-button *ngFor="let action of iconActions()" [color]="action.color? action.color: 'accent'"
             title="{{action.title}}" (click)="performAction(action)">
         <md-icon>{{action.icon}}</md-icon>

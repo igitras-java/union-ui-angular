@@ -1,8 +1,8 @@
 <div class="mat-table-container">
-    <table data-table
+    <table ig-data-table
            [class.mat-selectable]="isSelectable"
            [class.mat-clickable]="isClickable">
-        <th data-table-column class="mat-checkbox-column" *ngIf="isSelectable">
+        <th ig-data-table-column class="mat-checkbox-column" *ngIf="isSelectable">
             <md-checkbox
                     #checkBoxAll
                     *ngIf="isMultiple"
@@ -15,7 +15,7 @@
                     (keydown.space)="blockEvent($event)">
             </md-checkbox>
         </th>
-        <th data-table-column
+        <th ig-data-table-column
             *ngFor="let column of columns"
             [name]="column.name"
             [numeric]="column.numeric"
@@ -28,20 +28,20 @@
                 {{column.label? (column.unit? column.label + ' (' + column.unit + ')': column.label): column.name}}
             </span>
         </th>
-        <th data-table-column *ngIf="hasAction">
+        <th ig-data-table-column *ngIf="hasAction">
             Action
         </th>
-        <tr data-table-row
+        <tr ig-data-table-row
             [tabIndex]="isSelectable ? 0 : -1"
             [class.mat-selected]="(isClickable || isSelectable) && isRowSelected(row)"
-            *ngFor="let row of page.content; let rowIndex = index"
+            *ngFor="let row of content; let rowIndex = index"
             (click)="handleRowClick(row, $event, rowIndex)"
             (keyup)="isSelectable && _rowKeyup($event, row, rowIndex)"
             (keydown.space)="blockEvent($event)"
             (keydown.shift.space)="blockEvent($event)"
             (keydown.shift)="disableTextSelection()"
             (keyup.shift)="enableTextSelection()">
-            <td data-table-cell class="mat-checkbox-cell" *ngIf="isSelectable">
+            <td ig-data-table-cell class="mat-checkbox-cell" *ngIf="isSelectable">
                 <md-pseudo-checkbox
                         [state]="isRowSelected(row) ? 'checked' : 'unchecked'"
                         (mousedown)="disableTextSelection()"
@@ -49,7 +49,7 @@
                         (click)="select(row, $event, rowIndex)">
                 </md-pseudo-checkbox>
             </td>
-            <td data-table-cell
+            <td ig-data-table-cell
                 [numeric]="column.numeric"
                 [hidden]="column.hidden"
                 *ngFor="let column of columns">
@@ -60,7 +60,7 @@
                         [ngOutletContext]="{ value: getCellValue(column, row), row: row, column: column.name }">
                 </ng-template>
             </td>
-            <td data-table-cell class="mat-table-row-actions" *ngIf="hasAction">
+            <td ig-data-table-cell class="mat-table-row-actions" *ngIf="hasAction">
                 <button md-icon-button *ngFor="let action of rowActions" color="{{action.color || 'accent'}}"
                         (click)="handleRowAction(row, action)" title="{{action.title || action.name}}">
                     <md-icon>{{action.icon}}</md-icon>
@@ -71,8 +71,4 @@
     <div class="md-padding" *ngIf="!hasData" layout="row" layout-align="center center">
         <h3>No results to display.</h3>
     </div>
-    <pagination #pagingBar [page]="page" (change)="handleNavigate($event)">
-        <span pagination-label hide-xs>每页显示:</span>
-        当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>
-    </pagination>
 </div>

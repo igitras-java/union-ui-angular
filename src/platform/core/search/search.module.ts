@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -7,16 +7,20 @@ import { IgCommonModule } from '@igitras/core';
 
 export { ISearchItem, SearchComponent } from './search.component';
 
+const DEP_MODULES: Type<any>[] = [
+    ReactiveFormsModule,
+    MdInputModule,
+    MdIconModule,
+    MdChipsModule,
+    MdAutocompleteModule,
+    MdButtonModule,
+    IgCommonModule,
+];
+
 @NgModule({
     imports: [
-        ReactiveFormsModule,
         CommonModule,
-        MdInputModule,
-        MdIconModule,
-        MdChipsModule,
-        MdAutocompleteModule,
-        MdButtonModule,
-        IgCommonModule
+        DEP_MODULES
     ],
     declarations: [
         SearchComponent

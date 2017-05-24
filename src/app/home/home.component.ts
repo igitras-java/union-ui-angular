@@ -5,7 +5,7 @@ import {
     Direction,
     IDataTableRowAction,
     IDataTableRowActionPerformedEvent,
-    IDataTableSortChangeEvent,
+    IDataTableSortChangedEvent,
     IFieldDescriptor,
     IPage,
     IPageChangeEvent,
@@ -157,8 +157,8 @@ export class HomeComponent implements OnInit {
         },
     ];
     selectable: boolean = true;
-    clickable: boolean = false;
-    multiple: boolean = true;
+    clickable: boolean = true;
+    multiple: boolean = false;
 
     filteredData: any[] = this.data;
     filteredTotal: number = this.data.length;
@@ -244,7 +244,7 @@ export class HomeComponent implements OnInit {
         this.filter();
     }
 
-    sort(sortEvent: IDataTableSortChangeEvent): void {
+    sort(sortEvent: IDataTableSortChangedEvent): void {
         this.sortBy = sortEvent.name;
         this.sortOrder = sortEvent.order;
         this.filter();

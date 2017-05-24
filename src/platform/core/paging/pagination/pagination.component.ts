@@ -9,7 +9,7 @@ export interface IPageChangeEvent {
 }
 
 @Component({
-    selector: 'pagination',
+    selector: 'ig-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
@@ -154,7 +154,7 @@ export class PaginationComponent implements OnInit {
      * Method to be executed when page size changes or any button is clicked in the paging bar.
      * Emits an [IPageChangeEvent] implemented object.
      */
-    @Output('change') onChange: EventEmitter<IPageChangeEvent> = new EventEmitter<IPageChangeEvent>();
+    @Output('navigate') onNavigate: EventEmitter<IPageChangeEvent> = new EventEmitter<IPageChangeEvent>();
 
     get isRTL(): boolean {
         if (this._dir) {
@@ -292,7 +292,7 @@ export class PaginationComponent implements OnInit {
             fromRow: this._fromRow,
             toRow: this._toRow,
         };
-        this.onChange.emit(event);
+        this.onNavigate.emit(event);
     }
 
     /**

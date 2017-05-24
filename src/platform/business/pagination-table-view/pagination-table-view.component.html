@@ -1,0 +1,35 @@
+<md-card>
+    <md-card-title>
+        <div layout="row" layout-align="space-between end">
+            <span>{{title}}</span>
+            <ig-action-bar flex
+                           [enableSetting]="enableSetting"
+                           [enableSearch]="enableSearch"
+                           [tableActions]="actions"
+                           [columns]="fields"
+                           [placeholder]="'Search'"
+                           (onSearch)="handlePerformedSearch($event)"
+                           (onPerformAction)="handlePerformedAction($event)">
+            </ig-action-bar>
+        </div>
+    </md-card-title>
+    <md-divider></md-divider>
+    <md-card-content>
+        <ig-data-table #dataTable
+                       [content]="content()"
+                       [columns]="fields"
+                       [rowActions]="rowActions"
+                       [selectable]="rowSelectable"
+                       [clickable]="rowClickable"
+                       [multiple]="multipleSelect"
+                       [(ngModel)]="selectedRows"
+                       (rowActionPerform)="handlePerformedRowAction($event)"
+                       (rowClick)="handleRowClickedAction($event)"
+                       (sortChange)="handleSortChangedAction($event)">
+        </ig-data-table>
+        <ig-pagination #pagingBar [page]="pageData" (navigate)="handleNavigateEvent($event)">
+            <span pagination-label hide-xs>每页显示:</span>
+            当前第 {{pagingBar.range}}<span hide-xs> 条，总数: {{pagingBar.page.totalElements}}</span>
+        </ig-pagination>
+    </md-card-content>
+</md-card>

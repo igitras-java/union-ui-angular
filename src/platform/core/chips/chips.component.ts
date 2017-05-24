@@ -29,7 +29,7 @@ export const CHIPS_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     providers: [CHIPS_CONTROL_VALUE_ACCESSOR],
-    selector: 'chips',
+    selector: 'ig-chips',
     styleUrls: ['./chips.component.scss'],
     templateUrl: './chips.component.html',
 })
@@ -180,7 +180,7 @@ export class ChipsComponent implements ControlValueAccessor, DoCheck, OnInit {
     }
 
     ngDoCheck(): void {
-        // Throw onChange event only if array changes size.
+        // Throw onNavigate event only if array changes size.
         if (this._value && this._value.length !== this._length) {
             this._length = this._value.length;
             this.onChange(this._value);

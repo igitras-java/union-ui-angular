@@ -20,9 +20,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DOWN_ARROW, ENTER, SPACE, UP_ARROW } from '@angular/material';
 
 import { DataTableRowComponent } from './data-table-row/data-table-row.component';
-import { IDataTableSortChangeEvent } from './data-table-column/data-table-column.component';
+import { IDataTableSortChangedEvent } from './data-table-column/data-table-column.component';
 import { DataTableTemplateDirective } from './directives/data-table-template.directive';
-import { Direction, IFieldDescriptor, IPage, IPageChangeEvent, ISearchItem } from '@igitras/core';
+import { Direction, IFieldDescriptor } from '@igitras/core';
 
 const noop: any = () => {
     // empty method
@@ -51,7 +51,7 @@ export interface IDataTableSelectAllEvent {
     selected: boolean;
 }
 
-export interface IDataTableRowClickEvent {
+export interface IDataTableRowClickedEvent {
     row: any;
 }
 
@@ -62,7 +62,7 @@ export interface IDataTableRowActionPerformedEvent {
 
 @Component({
     providers: [DATA_TABLE_CONTROL_VALUE_ACCESSOR],
-    selector: 'data-table',
+    selector: 'ig-data-table',
     styleUrls: ['./data-table.component.scss'],
     templateUrl: './data-table.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -77,7 +77,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     private _onChangeCallback: (_: any) => void = noop;
 
     /** internal attributes */
-    private _page: IPage;
+    private _content: any[] = [];
     private _columns: IFieldDescriptor[];
     private _selectable: boolean = false;
     private _clickable: boolean = false;
@@ -140,14 +140,15 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
      */
     @Input('uniqueId') uniqueId: string;
 
-    @Input("page")
-    set page(page: IPage) {
-        this._page = page;
-        this.refresh()
+    @Input("content")
+    set content(content: any[]) {
+        console.log(content);
+        this._content = content;
+        this.refresh();
     }
 
-    get page(): IPage {
-        return this._page;
+    get content(): any[] {
+        return this._content ? this._content : [];
     }
 
     get hasAction(): boolean {
@@ -165,8 +166,8 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
 
     /**
      * columns?: IDataTableColumn[]
-     * Sets additional column configuration. [IDataTableColumn.name] has to exist in [_page.content] as key.
-     * Defaults to [_page.content] keys.
+     * Sets additional column configuration. [IDataTableColumn.name] has to exist in [content] as key.
+     * Defaults to [content] keys.
      */
     @Input('columns')
     set columns(cols: IFieldDescriptor[]) {
@@ -180,8 +181,8 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
 
         if (this.hasData) {
             this._columns = [];
-            // if columns is undefined, use key in [_page.content] rows as name and label for column headers.
-            let row: any = this._page.content[0];
+            // if columns is undefined, use key in [content] rows as name and label for column headers.
+            let row: any = this.content[0];
             Object.keys(row).forEach((k: string) => {
                 if (!this._columns.find((c: any) => c.name === k)) {
                     this._columns.push({name: k, label: k});
@@ -291,7 +292,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     }
 
     get hasData(): boolean {
-        return this._page && this._page.content && this._page.content.length > 0;
+        return this.content && this.content.length > 0;
     }
 
     /**
@@ -304,9 +305,9 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     /**
      * rowClick?: function
      * Event emitted when a row is clicked.
-     * Emits an [IDataTableRowClickEvent] implemented object.
+     * Emits an [IDataTableRowClickedEvent] implemented object.
      */
-    @Output('rowClick') onRowClick: EventEmitter<IDataTableRowClickEvent> = new EventEmitter<IDataTableRowClickEvent>();
+    @Output('rowClick') onRowClick: EventEmitter<IDataTableRowClickedEvent> = new EventEmitter<IDataTableRowClickedEvent>();
 
     /**
      * selectAll?: function
@@ -319,10 +320,10 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     /**
      * sortChange?: function
      * Event emitted when the column headers are clicked. [sortable] needs to be enabled.
-     * Emits an [IDataTableSortChangeEvent] implemented object.
+     * Emits an [IDataTableSortChangedEvent] implemented object.
      */
-    @Output('sortChange') onSortChange: EventEmitter<IDataTableSortChangeEvent> =
-        new EventEmitter<IDataTableSortChangeEvent>();
+    @Output('sortChange') onSortChange: EventEmitter<IDataTableSortChangedEvent> =
+        new EventEmitter<IDataTableSortChangedEvent>();
 
     /**
      * rowActionPerform?: function
@@ -331,11 +332,6 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
      */
     @Output('rowActionPerform') onRowActionPerform: EventEmitter<IDataTableRowActionPerformedEvent> =
         new EventEmitter<IDataTableRowActionPerformedEvent>();
-
-    @Output('searchPerform') onSearchPerform: EventEmitter<ISearchItem[] | string>
-        = new EventEmitter<ISearchItem[] | string>();
-
-    @Output('navigatePerform') onNavigatePerform: EventEmitter<IPageChangeEvent> = new EventEmitter<IPageChangeEvent>();
 
     constructor(@Optional() @Inject(DOCUMENT) private _document: any,
                 private _changeDetectorRef: ChangeDetectorRef) {
@@ -375,7 +371,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     }
 
     /**
-     * Refreshes data table and rerenders [_page.content] and [columns]
+     * Refreshes data table and rerenders [_ontent] and [columns]
      */
     refresh(): void {
         this._calculateCheckboxState();
@@ -387,7 +383,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
      */
     selectAll(checked: boolean): void {
         if (checked) {
-            this._page.content.forEach((row: any) => {
+            this.content.forEach((row: any) => {
                 // skiping already selected rows
                 if (!this.isRowSelected(row)) {
                     this._value.push(row);
@@ -435,11 +431,11 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
                     lastIndex = currentSelected;
                 }
                 for (let i: number = firstIndex + 1; i < lastIndex; i++) {
-                    this._doSelection(this._page.content[i]);
+                    this._doSelection(this.content[i]);
                 }
             }
             // set the last selected attribute unless the last selected unchecked a row
-            if (this.isRowSelected(this._page.content[currentSelected])) {
+            if (this.isRowSelected(this.content[currentSelected])) {
                 this._selectedBeforeLastIndex = this._lastSelectedIndex;
                 this._lastSelectedIndex = currentSelected;
             } else {
@@ -504,14 +500,6 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
         });
     }
 
-    handleSearch(search: ISearchItem[] | string) {
-        this.onSearchPerform.emit(search);
-    }
-
-    handleNavigate(navigate: IPageChangeEvent) {
-        this.onNavigatePerform.emit(navigate);
-    }
-
     /**
      * Handle all keyup events when focusing a data table row
      */
@@ -545,7 +533,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
                 }
                 this.blockEvent(event);
                 if (this.isMultiple && event.shiftKey) {
-                    this._doSelection(this._page.content[index - 1]);
+                    this._doSelection(this.content[index - 1]);
                     // if the checkboxes are all unselected then start over otherwise handle changing direction
                     this._lastArrowKeyDirection = (!this._allSelected && !this._indeterminate) ? undefined : Direction.Ascending;
                 }
@@ -571,7 +559,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
                 }
                 this.blockEvent(event);
                 if (this.isMultiple && event.shiftKey) {
-                    this._doSelection(this._page.content[index + 1]);
+                    this._doSelection(this.content[index + 1]);
                     // if the checkboxes are all unselected then start over otherwise handle changing direction
                     this._lastArrowKeyDirection = (!this._allSelected && !this._indeterminate) ? undefined : Direction.Descending;
                 }
@@ -658,7 +646,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
      */
     private _calculateAllSelected(): void {
         const match: string =
-            this._page.content ? this._page.content.find((d: any) => !this.isRowSelected(d)) : true;
+            this.content ? this.content.find((d: any) => !this.isRowSelected(d)) : true;
         this._allSelected = typeof match === 'undefined';
     }
 
@@ -667,8 +655,8 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
      */
     private _calculateIndeterminate(): void {
         this._indeterminate = false;
-        if (this._page.content) {
-            for (let row of this._page.content) {
+        if (this.content) {
+            for (let row of this.content) {
                 if (!this.isRowSelected(row)) {
                     continue;
                 }

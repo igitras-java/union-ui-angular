@@ -1,0 +1,1 @@
+export * from './pagination-table-view/pagination-table-view.module'

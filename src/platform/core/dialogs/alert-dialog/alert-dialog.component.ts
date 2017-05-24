@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 @Component({
-    selector: 'alert-dialog',
+    selector: 'ig-alert-dialog',
     templateUrl: './alert-dialog.component.html',
     styleUrls: ['./alert-dialog.component.scss'],
 })

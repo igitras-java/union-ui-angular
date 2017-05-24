@@ -8,10 +8,9 @@
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    confirm-dialog,
-    alert-dialog,
-    confirm-action,
-    prompt-dialog {
+    ig-confirm-dialog,
+    ig-alert-dialog,
+    ig-prompt-dialog {
         //.dialog-title {
         //    margin-top: 0;
         //    margin-bottom: 20px;

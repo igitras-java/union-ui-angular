@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pager',
+  selector: 'ig-pager',
   templateUrl: './pager.component.html',
   styleUrls: ['./pager.component.scss']
 })
