@@ -1,8 +1,39 @@
+import {IModelDescriptor} from './model';
+
+/**
+ * Model Types.
+ */
+export enum IModelType {
+    String = <any>'String',
+    Boolean = <any>'Boolean',
+    Number = <any>'Number',
+    Object = <any>'Object',
+    Range = <any>'Range',
+    Array = <any>'Array',
+}
+
+/**
+ * Base Model Descriptor.
+ */
+export interface IModelDescriptor {
+    name: string;
+    type: IModelType;
+    alias?: string;
+}
+
+/**
+ * Model Descriptor. The whole world is building on this.
+ *
+ * The type of this descriptor is always Object.
+ */
+export interface IObjectDescriptor extends IModelDescriptor {
+    fields: IModelDescriptor[];
+}
+
 /**
  * Model Field Descriptor.
  */
-export interface IFieldDescriptor {
-    name: string;
+export interface IFieldDescriptor extends IModelDescriptor {
     label?: string;
     unit?: string;
     tooltip?: string;
@@ -15,18 +46,20 @@ export interface IFieldDescriptor {
     filter?: boolean;
 }
 
-export interface IContext {
+/**
+ * Model Field Descriptor which the field value is a range.
+ */
+export interface IRangeFieldDescriptor extends IFieldDescriptor {
+    from: any;
+    to: any;
+    etype: IModelType;
+}
+
+/**
+ * Model Field Descriptor which the field value is an array.
+ */
+export interface IArrayFieldDescriptor extends IFieldDescriptor {
     content: any[];
-}
-
-export interface IAction {
-    name: string;
-    icon?: string;
-    title?: string;
-    color?: string;
-}
-
-export interface IActionPerformedEvent {
-    action: IAction;
-    context: IContext;
+    etype: IModelType;
+    unique: boolean;
 }

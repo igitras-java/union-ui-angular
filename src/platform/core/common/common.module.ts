@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
  * MODELS
  */
 import { Direction, IOrder, IPage, IPageable } from './models/page';
-import { IAction, IActionPerformedEvent, IContext, IFieldDescriptor } from './models/model';
+import { IModelDescriptor, IModelType, IObjectDescriptor, IFieldDescriptor, IRangeFieldDescriptor, IArrayFieldDescriptor } from './models/model';
+import { IAction, IActionPerformedEvent, IContext } from './models/event'
 import { MdListModule } from '@angular/material';
 
 /**
@@ -69,7 +70,13 @@ export {
     IOrder,
     Direction,
 
+    IModelType,
+    IModelDescriptor,
+    IObjectDescriptor,
     IFieldDescriptor,
+    IRangeFieldDescriptor,
+    IArrayFieldDescriptor,
+
     IAction,
     IActionPerformedEvent,
     IContext,

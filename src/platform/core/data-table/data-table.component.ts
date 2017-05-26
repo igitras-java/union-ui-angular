@@ -14,15 +14,15 @@ import {
     TemplateRef,
     ViewChildren
 } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {DOCUMENT} from '@angular/platform-browser';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import { DOWN_ARROW, ENTER, SPACE, UP_ARROW } from '@angular/material';
+import {DOWN_ARROW, ENTER, SPACE, UP_ARROW} from '@angular/material';
 
-import { DataTableRowComponent } from './data-table-row/data-table-row.component';
-import { IDataTableSortChangedEvent } from './data-table-column/data-table-column.component';
-import { DataTableTemplateDirective } from './directives/data-table-template.directive';
-import { Direction, IFieldDescriptor } from '@igitras/core';
+import {DataTableRowComponent} from './data-table-row/data-table-row.component';
+import {IDataTableSortChangedEvent} from './data-table-column/data-table-column.component';
+import {DataTableTemplateDirective} from './directives/data-table-template.directive';
+import {Direction, IFieldDescriptor, IModelType} from '@igitras/core';
 
 const noop: any = () => {
     // empty method
@@ -185,7 +185,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
             let row: any = this.content[0];
             Object.keys(row).forEach((k: string) => {
                 if (!this._columns.find((c: any) => c.name === k)) {
-                    this._columns.push({name: k, label: k});
+                    this._columns.push(<IFieldDescriptor>{name: k, type: IModelType.String, label: k});
                 }
             });
             return this._columns;
@@ -406,8 +406,8 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
         // if selection is done by a [uniqueId] it uses it to compare, else it compares by reference.
         if (this.uniqueId) {
             return this._value ? this._value.filter((val: any) => {
-                    return val[this.uniqueId] === row[this.uniqueId];
-                }).length > 0 : false;
+                return val[this.uniqueId] === row[this.uniqueId];
+            }).length > 0 : false;
         }
         return this._value ? this._value.indexOf(row) > -1 : false;
     }

@@ -8,7 +8,7 @@
   $foreground: map-get($theme, foreground);
 
   // chips
-  chips {
+  ig-chips {
     // chip
     .mat-basic-chip {
       background: mat-color($background, status-bar);

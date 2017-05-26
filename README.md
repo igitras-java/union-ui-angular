@@ -16,5 +16,5 @@
 2. ng build --env=prod && cd dist && gzip -rk . && cd -
 3. git add dist
 4. git commit -m "msg here"
-5. git push origin dev:refs/for/dev
+5. git push
 

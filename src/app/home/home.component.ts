@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SearchOption } from '../shared/libs/search/search.component';
+import {Component, OnInit} from '@angular/core';
+import {SearchOption} from '../shared/libs/search/search.component';
 import {
     DataTableService,
     Direction,
@@ -9,7 +9,8 @@ import {
     IFieldDescriptor,
     IPage,
     IPageChangeEvent,
-    ISearchItem
+    ISearchItem,
+    IModelType
 } from '@igitras/core';
 
 const NUMBER_FORMAT: (v: any) => any = (v: number) => v;
@@ -29,15 +30,72 @@ export class HomeComponent implements OnInit {
     firstLast: boolean = true;
 
     columns: IFieldDescriptor[] = [
-        {name: 'name', label: 'Dessert', unit: '100g serving', sortable: true, searchable: true},
-        {name: 'type', label: 'Type', filter: true, searchable: true},
-        {name: 'calories', label: 'Calories', numeric: true, format: NUMBER_FORMAT, sortable: true, hidden: false},
-        {name: 'fat', label: 'Fat', unit: 'g', numeric: true, format: DECIMAL_FORMAT, sortable: true, searchable: true},
-        {name: 'carbs', label: 'Carbs', unit: 'g', numeric: true, format: NUMBER_FORMAT, searchable: true},
-        {name: 'protein', label: 'Protein', unit: 'g', numeric: true, format: DECIMAL_FORMAT, searchable: true},
-        {name: 'sodium', label: 'Sodium', unit: 'mg', numeric: true, format: NUMBER_FORMAT, searchable: true},
-        {name: 'calcium', label: 'Calcium', unit: '%', numeric: true, format: NUMBER_FORMAT, searchable: true},
-        {name: 'iron', label: 'Iron', unit: '%', numeric: true, format: NUMBER_FORMAT, searchable: true},
+        {name: 'name', type: IModelType.String, label: 'Dessert', unit: '100g serving', sortable: true, searchable: true},
+        {name: 'type', type: IModelType.String, label: 'Type', filter: true, searchable: true},
+        {
+            name: 'calories',
+            type: IModelType.Number,
+            label: 'Calories',
+            numeric: true,
+            format: NUMBER_FORMAT,
+            sortable: true,
+            hidden: false
+        },
+        {
+            name: 'fat',
+            type: IModelType.Number,
+            label: 'Fat',
+            unit: 'g',
+            numeric: true,
+            format: DECIMAL_FORMAT,
+            sortable: true,
+            searchable: true
+        },
+        {
+            name: 'carbs',
+            type: IModelType.Number,
+            label: 'Carbs',
+            unit: 'g',
+            numeric: true,
+            format: NUMBER_FORMAT,
+            searchable: true
+        },
+        {
+            name: 'protein',
+            type: IModelType.Number,
+            label: 'Protein',
+            unit: 'g',
+            numeric: true,
+            format: DECIMAL_FORMAT,
+            searchable: true
+        },
+        {
+            name: 'sodium',
+            type: IModelType.Number,
+            label: 'Sodium',
+            unit: 'mg',
+            numeric: true,
+            format: NUMBER_FORMAT,
+            searchable: true
+        },
+        {
+            name: 'calcium',
+            type: IModelType.Number,
+            label: 'Calcium',
+            unit: '%',
+            numeric: true,
+            format: NUMBER_FORMAT,
+            searchable: true
+        },
+        {
+            name: 'iron',
+            type: IModelType.Number,
+            label: 'Iron',
+            unit: '%',
+            numeric: true,
+            format: NUMBER_FORMAT,
+            searchable: true
+        },
     ];
 
     searching: boolean = false;

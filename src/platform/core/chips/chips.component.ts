@@ -23,7 +23,7 @@ const noop: any = () => {
 
 export const CHIPS_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => ChipsComponent),
+    useExisting: forwardRef(() => IgChipsComponent),
     multi: true,
 };
 
@@ -33,7 +33,7 @@ export const CHIPS_CONTROL_VALUE_ACCESSOR: any = {
     styleUrls: ['./chips.component.scss'],
     templateUrl: './chips.component.html',
 })
-export class ChipsComponent implements ControlValueAccessor, DoCheck, OnInit {
+export class IgChipsComponent implements ControlValueAccessor, DoCheck, OnInit {
 
     /**
      * Implemented as part of ControlValueAccessor.

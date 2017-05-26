@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { MdAutocompleteModule, MdChipsModule, MdIconModule, MdInputModule } from '@angular/material';
 
-import { ChipsComponent } from './chips.component';
-export { ChipsComponent } from './chips.component';
+import { IgChipsComponent } from './chips.component';
 
 @NgModule({
     imports: [
@@ -18,10 +17,10 @@ export { ChipsComponent } from './chips.component';
         MdAutocompleteModule,
     ],
     declarations: [
-        ChipsComponent,
+        IgChipsComponent,
     ],
     exports: [
-        ChipsComponent,
+        IgChipsComponent,
     ],
 })
 export class IgChipsModule {
