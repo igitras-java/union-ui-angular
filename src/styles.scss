@@ -1,19 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
-/* This must be included to use the included variables and the color function */
-@import 'theme';
+// You can add global styles to this file that will cascade like normal CSS
 
-$mason: mat-palette($mat-grey);
-
-md-card {
-    margin: 10px;
-    box-shadow: none;
+// class for route component animations
+.ig-route-animation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
-.label {
-    span {
-        padding: 0 5px;
-        background: mat-color($primary, 100);
-        font-size: 12px;
-        color: mat-color($mason);
+.cdk-overlay-pane {
+    direction: ltr;
+    html[dir="rtl"] & {
+        direction: rtl;
     }
 }

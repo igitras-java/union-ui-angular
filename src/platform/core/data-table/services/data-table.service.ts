@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Direction } from '@igitras/core';
 
 @Injectable()
-export class DataTableService {
+export class IgDataTableService {
 
   /**
    * params:

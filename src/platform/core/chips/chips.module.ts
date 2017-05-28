@@ -1,25 +1,29 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 import { MdAutocompleteModule, MdChipsModule, MdIconModule, MdInputModule } from '@angular/material';
 
 import { IgChipsComponent } from './chips.component';
+import { IgCommonModule } from '@igitras/core';
 
+const DEP_MODULES: Type<any>[] = [
+    IgCommonModule,
+    ReactiveFormsModule,
+    MdInputModule,
+    MdIconModule,
+    MdChipsModule,
+    MdAutocompleteModule,
+];
 @NgModule({
     imports: [
-        ReactiveFormsModule,
-        CommonModule,
-        MdInputModule,
-        MdIconModule,
-        MdChipsModule,
-        MdAutocompleteModule,
+        DEP_MODULES,
     ],
     declarations: [
         IgChipsComponent,
     ],
     exports: [
+        DEP_MODULES,
         IgChipsComponent,
     ],
 })

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActionBarComponent } from './action-bar.component';
+import { IgActionBarComponent } from './action-bar.component';
 
-describe('ActionBarComponent', () => {
-  let component: ActionBarComponent;
-  let fixture: ComponentFixture<ActionBarComponent>;
+describe('IgActionBarComponent', () => {
+  let component: IgActionBarComponent;
+  let fixture: ComponentFixture<IgActionBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActionBarComponent ]
+      declarations: [ IgActionBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ActionBarComponent);
+    fixture = TestBed.createComponent(IgActionBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

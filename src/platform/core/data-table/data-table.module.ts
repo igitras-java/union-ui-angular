@@ -1,5 +1,4 @@
 import { NgModule, Type } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import {
     MdButtonModule,
@@ -17,7 +16,7 @@ import { DataTableColumnComponent } from './data-table-column/data-table-column.
 import { DataTableCellComponent } from './data-table-cell/data-table-cell.component';
 import { DataTableRowComponent } from './data-table-row/data-table-row.component';
 import { DataTableTableComponent } from './data-table-table/data-table-table.component';
-import { DataTableService } from './services/data-table.service';
+import { IgDataTableService } from './services/data-table.service';
 
 const DATA_TABLE: Type<any>[] = [
     DataTableComponent,
@@ -38,7 +37,7 @@ export {
     IDataTableRowActionPerformedEvent,
 } from './data-table.component';
 
-export { DataTableService } from './services/data-table.service';
+export { IgDataTableService } from './services/data-table.service';
 export {
     DataTableColumnComponent,
     IDataTableSortChangedEvent
@@ -48,29 +47,29 @@ export { DataTableRowComponent } from './data-table-row/data-table-row.component
 export { DataTableTableComponent } from './data-table-table/data-table-table.component';
 
 const DEP_MODULES: Type<any>[] = [
+    IgCommonModule,
     MdCheckboxModule,
     MdTooltipModule,
     MdIconModule,
     MdButtonModule,
     MdSelectionModule,
     MdListModule,
-    IgCommonModule,
 ];
 
 
 @NgModule({
     imports: [
-        CommonModule,
         DEP_MODULES,
     ],
     declarations: [
         DATA_TABLE,
     ],
     exports: [
+        DEP_MODULES,
         DATA_TABLE,
     ],
     providers: [
-        DataTableService,
+        IgDataTableService,
     ],
 })
 export class IgDataTableModule {

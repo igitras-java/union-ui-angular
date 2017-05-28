@@ -7,7 +7,7 @@
 
 // Create a theme.
 @mixin ig-theme($theme) {
-    @include common-theme($theme);
+    @include ig-common-theme($theme);
     @include data-table-theme($theme);
     @include chips-theme($theme);
     @include search-theme($theme);

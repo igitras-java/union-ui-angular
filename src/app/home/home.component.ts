@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchOption} from '../shared/libs/search/search.component';
 import {
-    DataTableService,
+    IgDataTableService,
     Direction,
     IDataTableRowAction,
     IDataTableRowActionPerformedEvent,
@@ -278,7 +278,7 @@ export class HomeComponent implements OnInit {
     ];
 
 
-    constructor(private _dataTableService: DataTableService) {
+    constructor(private _dataTableService: IgDataTableService) {
     }
 
 

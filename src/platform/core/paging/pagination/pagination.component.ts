@@ -4,8 +4,8 @@ import { IPage, IPageable } from '@igitras/core';
 
 export interface IPageChangeEvent {
     pageable: IPageable
-    fromRow: number;
-    toRow: number;
+    fromRow?: number;
+    toRow?: number;
 }
 
 @Component({
@@ -13,7 +13,7 @@ export interface IPageChangeEvent {
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class IgPaginationComponent implements OnInit {
 
     private _pageSizes: number[] = [10, 15, 20, 50, 100];
 

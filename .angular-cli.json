@@ -21,7 +21,8 @@
             "prefix": "app",
             "styles": [
                 "theme.scss",
-                "styles.scss"
+                "styles.scss",
+                "./platform/core/common/platform.scss"
             ],
             "scripts": [],
             "environmentSource": "environments/environment.ts",

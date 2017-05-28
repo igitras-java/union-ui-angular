@@ -6,10 +6,6 @@
     $warn: map-get($theme, warn);
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
-    //
-    //.data-table-actions {
-    //    border-bottom-color: mat-color($foreground, divider);
-    //}
 
     table[ig-data-table] {
         .ig-data-table-row {

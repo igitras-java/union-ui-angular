@@ -1,0 +1,26 @@
+:host {
+    display: block;
+}
+
+.ig-pager {
+    height: 48px;
+    > * {
+        margin: 0 10px;
+    }
+
+    .title {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+[md-icon-button] {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+[md-button] {
+    font-size: 12px;
+    font-weight: normal;
+}

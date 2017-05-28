@@ -6,7 +6,7 @@ import { MdCheckbox, MdPseudoCheckbox } from '@angular/material';
 import { DataTableColumnComponent } from './data-table-column/data-table-column.component';
 import { DataTableRowComponent } from './data-table-row/data-table-row.component';
 import { DataTableComponent, IDataTableColumn } from './data-table.component';
-import { DataTableService } from './services/data-table.service';
+import { IgDataTableService } from './services/data-table.service';
 import { IgDataTableModule } from './data-table.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,14 +24,14 @@ describe('Component: DataTable', () => {
                 DataTableRowClickTestComponent,
             ],
             providers: [
-                DataTableService,
+                IgDataTableService,
             ],
         });
         TestBed.compileComponents();
     }));
 
     it('should set hidden and not get search hits and set it to false and get search results', (done: DoneFn) => {
-        inject([DataTableService], (tdDataTableService: DataTableService) => {
+        inject([IgDataTableService], (tdDataTableService: IgDataTableService) => {
             let fixture: ComponentFixture<any> = TestBed.createComponent(DataTableBasicTestComponent);
             let component: DataTableBasicTestComponent = fixture.debugElement.componentInstance;
 
@@ -79,7 +79,7 @@ describe('Component: DataTable', () => {
     });
 
     it('should set filter and not get search hits and set it to false and get search results', (done: DoneFn) => {
-        inject([DataTableService], (dataTableService: DataTableService) => {
+        inject([IgDataTableService], (dataTableService: IgDataTableService) => {
             let fixture: ComponentFixture<any> = TestBed.createComponent(DataTableBasicTestComponent);
             let component: DataTableBasicTestComponent = fixture.debugElement.componentInstance;
 

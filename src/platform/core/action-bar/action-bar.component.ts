@@ -6,7 +6,7 @@ import { IAction, IFieldDescriptor, ISearchItem, SearchComponent } from '@igitra
     templateUrl: './action-bar.component.html',
     styleUrls: ['./action-bar.component.scss']
 })
-export class ActionBarComponent {
+export class IgActionBarComponent {
 
     @ViewChild(SearchComponent) _search: SearchComponent;
 
@@ -54,10 +54,7 @@ export class ActionBarComponent {
     }
 
     performSearch(searchItems: ISearchItem[] | string) {
-        console.log("handle search3")
         this.onSearch.emit(searchItems);
-        console.log(searchItems);
-        console.log("handle search4")
     }
 
     cancelSearch($event: any) {

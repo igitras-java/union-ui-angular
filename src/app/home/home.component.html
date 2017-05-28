@@ -1,27 +1,4 @@
-<md-card>
-    <md-card-title>
-        <div layout="row" layout-align="space-between end">
-            <span>首页</span>
-            <ig-action-bar flex [enableSetting]="true" [columns]="columns"></ig-action-bar>
-        </div>
-    </md-card-title>
-    <md-divider></md-divider>
-    <md-card-content>
-        <ig-data-table
-                #dataTable
-                [content]="data"
-                [columns]="columns"
-                [selectable]="selectable"
-                [clickable]="clickable"
-                [multiple]="multiple"
-                [sortable]="true"
-                [sortBy]="sortBy"
-                [(ngModel)]="selectedRows"
-                [sortOrder]="sortOrder"
-                (sortChange)="sort($event)"
-                (rowActionPerform)="performAction($event)"
-                (rowClick)="showAlert($event)">
-        </ig-data-table>
-    </md-card-content>
-</md-card>
-<ig-pagination-table-view [pageData]="pageData" [fields]="columns"></ig-pagination-table-view>
+<ig-pagination-table-view [pageData]="pageData" [fields]="columns" [rowActions]="actions">  </ig-pagination-table-view>
+<ig-pager [page]="pageData" [showLabel]="true">
+    <h1>Hello</h1>
+</ig-pager>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IgToggleDirective } from './animations/toggle/toggle.directive';
 import { IgFadeDirective } from './animations/fade/fade.directive';
 /**
- * FORMS
+ * IG_FORMS
  */
 // Form Directives
 import { IgAutoTrimDirective } from './forms/auto-trim/auto-trim.directive';
@@ -11,7 +11,7 @@ import { IgAutoTrimDirective } from './forms/auto-trim/auto-trim.directive';
 import { MinValidator } from './forms/validators/min/min.validator';
 import { MaxValidator } from './forms/validators/max/max.validator';
 /**
- * PIPES
+ * IG_PIPES
  */
 import { IgTimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
 import { IgTimeDifferencePipe } from './pipes/time-difference/time-difference.pipe';
@@ -29,10 +29,10 @@ import { IAction, IActionPerformedEvent, IContext } from './models/event'
 import { MdListModule } from '@angular/material';
 
 /**
- * ANIMATIONS
+ * IG_ANIMATIONS
  */
 
-const ANIMATIONS: Type<any>[] = [
+const IG_ANIMATIONS: Type<any>[] = [
     IgToggleDirective,
     IgFadeDirective,
 ];
@@ -42,13 +42,13 @@ export { IgCollapseAnimation } from './animations/collapse/collapse.animation';
 export { IgFadeInOutAnimation } from './animations/fade/fadeInOut.animation';
 
 
-const FORMS: Type<any>[] = [
+const IG_FORMS: Type<any>[] = [
     IgAutoTrimDirective,
 ];
 
 export { IgAutoTrimDirective };
 
-const VALIDATORS: Type<any>[] = [
+const IG_VALIDATORS: Type<any>[] = [
     MinValidator,
     MaxValidator,
 ];
@@ -56,7 +56,7 @@ const VALIDATORS: Type<any>[] = [
 export { MinValidator, MaxValidator };
 export { IgValidators } from './forms/validators/validators';
 
-const PIPES: Type<any>[] = [
+const IG_PIPES: Type<any>[] = [
     IgTimeAgoPipe,
     IgTimeDifferencePipe,
     IgBytesPipe,
@@ -88,18 +88,18 @@ export {
         CommonModule,
     ],
     declarations: [
-        FORMS,
-        PIPES,
-        ANIMATIONS,
-        VALIDATORS,
+        IG_FORMS,
+        IG_PIPES,
+        IG_ANIMATIONS,
+        IG_VALIDATORS,
     ],
     exports: [
         FormsModule,
         CommonModule,
-        FORMS,
-        PIPES,
-        ANIMATIONS,
-        VALIDATORS,
+        IG_FORMS,
+        IG_PIPES,
+        IG_ANIMATIONS,
+        IG_VALIDATORS,
     ],
     providers: [
         IgRouterPathService,

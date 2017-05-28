@@ -8,7 +8,7 @@
     $foreground: map-get($theme, foreground);
 
     // search
-    search {
+    ig-search {
         // search items
         .mat-basic-chip {
             background: mat-color($background, status-bar);
