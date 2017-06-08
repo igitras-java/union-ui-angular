@@ -1,16 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {SearchOption} from '../shared/libs/search/search.component';
+import { Component, OnInit } from '@angular/core';
+import { SearchOption } from '../shared/libs/search/search.component';
 import {
-    IgDataTableService,
     Direction,
     IDataTableRowAction,
     IDataTableRowActionPerformedEvent,
     IDataTableSortChangedEvent,
+    IDecoratorType,
     IFieldDescriptor,
+    IFieldTableDecorator,
+    IgDataTableService,
+    IModelType,
     IPage,
     IPageChangeEvent,
-    ISearchItem,
-    IModelType
+    ISearchItem
 } from '@igitras/core';
 
 const NUMBER_FORMAT: (v: any) => any = (v: number) => v;
@@ -30,72 +32,123 @@ export class HomeComponent implements OnInit {
     firstLast: boolean = true;
 
     columns: IFieldDescriptor[] = [
-        {name: 'name', type: IModelType.String, label: 'Dessert', unit: '100g serving', sortable: true, searchable: true},
-        {name: 'type', type: IModelType.String, label: 'Type', filter: true, searchable: true},
-        {
-            name: 'calories',
-            type: IModelType.Number,
-            label: 'Calories',
-            numeric: true,
-            format: NUMBER_FORMAT,
-            sortable: true,
-            hidden: false
+        <IFieldDescriptor>{
+            name: 'name',
+            type: IModelType.String,
+            alias: 'Dessert',
+            unit: '100g serving',
+            decorators: [
+                <IFieldTableDecorator>{
+                    type: IDecoratorType.Table,
+                    sortable: true,
+                    searchable: true
+                }
+            ]
         },
-        {
-            name: 'fat',
-            type: IModelType.Number,
-            label: 'Fat',
-            unit: 'g',
-            numeric: true,
-            format: DECIMAL_FORMAT,
-            sortable: true,
-            searchable: true
-        },
-        {
-            name: 'carbs',
-            type: IModelType.Number,
-            label: 'Carbs',
-            unit: 'g',
-            numeric: true,
-            format: NUMBER_FORMAT,
-            searchable: true
-        },
-        {
-            name: 'protein',
-            type: IModelType.Number,
-            label: 'Protein',
-            unit: 'g',
-            numeric: true,
-            format: DECIMAL_FORMAT,
-            searchable: true
-        },
-        {
-            name: 'sodium',
-            type: IModelType.Number,
-            label: 'Sodium',
-            unit: 'mg',
-            numeric: true,
-            format: NUMBER_FORMAT,
-            searchable: true
-        },
-        {
-            name: 'calcium',
-            type: IModelType.Number,
-            label: 'Calcium',
-            unit: '%',
-            numeric: true,
-            format: NUMBER_FORMAT,
-            searchable: true
-        },
-        {
-            name: 'iron',
-            type: IModelType.Number,
-            label: 'Iron',
-            unit: '%',
-            numeric: true,
-            format: NUMBER_FORMAT,
-            searchable: true
-        },
+        // {
+        //     name: 'type',
+        //     type: IModelType.String,
+        //     alias: 'Type',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             filterable: true,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'calories',
+        //     type: IModelType.Number,
+        //     alias: 'Calories',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: NUMBER_FORMAT,
+        //             sortable: true,
+        //             hidden: false
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'fat',
+        //     type: IModelType.Number,
+        //     alias: 'Fat',
+        //     unit: 'g',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: DECIMAL_FORMAT,
+        //             sortable: true,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'carbs',
+        //     type: IModelType.Number,
+        //     alias: 'Carbs',
+        //     unit: 'g',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: NUMBER_FORMAT,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'protein',
+        //     type: IModelType.Number,
+        //     alias: 'Protein',
+        //     unit: 'g',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: DECIMAL_FORMAT,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'sodium',
+        //     type: IModelType.Number,
+        //     alias: 'Sodium',
+        //     unit: 'mg',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: NUMBER_FORMAT,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'calcium',
+        //     type: IModelType.Number,
+        //     alias: 'Calcium',
+        //     unit: '%',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: NUMBER_FORMAT,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: 'iron',
+        //     type: IModelType.Number,
+        //     alias: 'Iron',
+        //     unit: '%',
+        //     decorators: [
+        //         <IFieldTableDecorator>{
+        //             type: IDecoratorType.Table,
+        //             format: NUMBER_FORMAT,
+        //             searchable: true
+        //         }
+        //     ]
+        // },
     ];
 
     searching: boolean = false;
@@ -299,42 +352,42 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.filter();
+        // this.filter();
     }
 
     sort(sortEvent: IDataTableSortChangedEvent): void {
         this.sortBy = sortEvent.name;
         this.sortOrder = sortEvent.order;
-        this.filter();
+        // this.filter();
     }
 
     search(searchTerm: string): void {
         this.searchTerm = searchTerm;
-        this.filter();
+        // this.filter();
     }
 
     page(pagingEvent: IPageChangeEvent): void {
         this.fromRow = pagingEvent.fromRow;
         // this.currentPage = pagingEvent.page;
         // this.pageSize = pagingEvent.pageSize;
-        this.filter();
+        // this.filter();
     }
 
-    filter(): void {
-        let newData: any[] = this.data;
-        const excludedColumns: string[] = this.columns
-            .filter((column: IFieldDescriptor) => {
-                return ((column.filter === undefined && column.hidden === true) ||
-                (column.filter !== undefined && column.filter === false));
-            }).map((column: IFieldDescriptor) => {
-                return column.name;
-            });
-        newData = this._dataTableService.filterData(newData, this.searchTerm, true, excludedColumns);
-        this.filteredTotal = newData.length;
-        newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
-        newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
-        this.filteredData = newData;
-    }
+    // filter(): void {
+    //     let newData: any[] = this.data;
+    //     const excludedColumns: string[] = this.columns
+    //         .filter((column: IFieldDescriptor) => {
+    //             return ((column.filter === undefined && column.hidden === true) ||
+    //             (column.filter !== undefined && column.filter === false));
+    //         }).map((column: IFieldDescriptor) => {
+    //             return column.name;
+    //         });
+    //     newData = this._dataTableService.filterData(newData, this.searchTerm, true, excludedColumns);
+    //     this.filteredTotal = newData.length;
+    //     newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+    //     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+    //     this.filteredData = newData;
+    // }
 
     toggleTooltips(): void {
         if (this.columns[0].tooltip) {

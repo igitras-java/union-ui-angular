@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { IAction, IFieldDescriptor, ISearchItem, SearchComponent } from '@igitras/core';
+import { ICommand, IFieldDescriptor, ISearchItem, SearchComponent } from '@igitras/core';
 
 @Component({
     selector: 'ig-action-bar',
@@ -11,8 +11,8 @@ export class IgActionBarComponent {
     @ViewChild(SearchComponent) _search: SearchComponent;
 
     private _columns: IFieldDescriptor[] = [];
-    private _iconActions: IAction[] = [];
-    private _btnActions: IAction[] = [];
+    private _iconActions: ICommand[] = [];
+    private _btnActions: ICommand[] = [];
     searching: boolean = false;
 
     @Input("placeholder") placeholder: string = 'Search';
@@ -20,7 +20,7 @@ export class IgActionBarComponent {
     @Input("enableSetting") enableSetting: boolean = false;
 
     @Input("tableActions")
-    set tableActions(actions: IAction[]) {
+    set tableActions(actions: ICommand[]) {
         this._iconActions = actions.filter((action) => !!action.icon);
         this._btnActions = actions.filter((action) => !action.icon);
     }
@@ -34,22 +34,22 @@ export class IgActionBarComponent {
         return this._columns;
     }
 
-    iconActions(): IAction[] {
+    iconActions(): ICommand[] {
         return this._iconActions;
     }
 
-    buttonActions(): IAction[] {
+    buttonActions(): ICommand[] {
         return this._btnActions;
     }
 
-    @Output("onPerformAction") onPerformAction: EventEmitter<IAction> = new EventEmitter<IAction>();
+    @Output("onPerformAction") onPerformAction: EventEmitter<ICommand> = new EventEmitter<ICommand>();
     @Output("onSearch") onSearch: EventEmitter<ISearchItem[] | string>
         = new EventEmitter<ISearchItem[] | string>();
 
     constructor() {
     }
 
-    performAction(action: IAction) {
+    performAction(action: ICommand) {
         this.onPerformAction.emit(action);
     }
 

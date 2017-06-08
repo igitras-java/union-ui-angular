@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
-    IAction,
-    IActionPerformedEvent,
-    IContext,
+    ICommand,
+    ICommandPerformedEvent,
+    IEventContext,
     IDataTableRowAction,
     IDataTableRowActionPerformedEvent,
     IDataTableRowClickedEvent,
@@ -26,7 +26,7 @@ export class PaginationTableViewComponent {
     @Input("enableSearch") enableSearch: boolean = true;
     @Input("enableSetting") enableSetting: boolean = false;
 
-    @Input("actions") actions: IAction[] = [];
+    @Input("actions") actions: ICommand[] = [];
     @Input("rowActions") rowActions: IDataTableRowAction[] = [];
 
     @Input("fields") fields: IFieldDescriptor[] = [];
@@ -37,8 +37,8 @@ export class PaginationTableViewComponent {
     @Input("multipleSelect") multipleSelect: boolean = true;
     @Input("rowClickable") rowClickable: boolean = false;
 
-    @Output("onPerformAction") onPerformAction: EventEmitter<IActionPerformedEvent>
-        = new EventEmitter<IActionPerformedEvent>();
+    @Output("onPerformAction") onPerformAction: EventEmitter<ICommandPerformedEvent>
+        = new EventEmitter<ICommandPerformedEvent>();
 
     @Output("onSearch") onSearch: EventEmitter<ISearchItem[] | string> = new EventEmitter<ISearchItem[] | string>();
 
@@ -68,10 +68,10 @@ export class PaginationTableViewComponent {
         return this.pageData.content;
     }
 
-    handlePerformedAction(action: IAction) {
-        this.onPerformAction.emit(<IActionPerformedEvent>{
+    handlePerformedAction(action: ICommand) {
+        this.onPerformAction.emit(<ICommandPerformedEvent>{
             action: action,
-            context: <IContext>{
+            context: <IEventContext>{
                 content: this.selectedRows
             }
         });

@@ -1,4 +1,4 @@
-import {IModelDescriptor} from './model';
+import { IModelDescriptor } from './model';
 
 /**
  * Model Types.
@@ -34,16 +34,9 @@ export interface IObjectDescriptor extends IModelDescriptor {
  * Model Field Descriptor.
  */
 export interface IFieldDescriptor extends IModelDescriptor {
-    label?: string;
     unit?: string;
     tooltip?: string;
-    numeric?: boolean;
-    format?: (value: any) => any;
-    nested?: boolean;
-    sortable?: boolean;
-    searchable?: boolean;
-    hidden?: boolean;
-    filter?: boolean;
+    decorators?: IFieldDecorator[];
 }
 
 /**
@@ -62,4 +55,60 @@ export interface IArrayFieldDescriptor extends IFieldDescriptor {
     content: any[];
     etype: IModelType;
     unique: boolean;
+}
+
+export enum IDecoratorType {
+    Form = <any>'Form',
+    Table = <any>'Table',
+}
+
+export enum IFieldInputElement {
+    Input = <any>'input',
+    Password = <any>'password',
+    Textarea = <any>'textarea',
+    Slider = <any>'slider',
+    SlideToggle = <any>'slide-toggle',
+    Checkbox = <any>'checkbox',
+    Select = <any>'select',
+}
+
+/**
+ * Decorator for Present or Action.
+ */
+export interface IFieldDecorator {
+    type: IDecoratorType;
+    hidden?: boolean;
+}
+
+/**
+ * Decorator for the field present in the form.
+ */
+export interface IFieldFormDecorator extends IFieldDecorator {
+    // how to render
+    flex?: number;
+    input?: IFieldInputElement;
+
+    // input helper
+    default?: any;
+
+    // constrains
+    required?: boolean;
+    pattern?: string;
+    min?: any;
+    max?: any;
+
+    // options
+    selections?: () => any[];
+}
+
+/**
+ * Decorator for the field present in the table.
+ */
+export interface IFieldTableDecorator extends IFieldDecorator {
+    // actions
+    sortable?: boolean;
+    searchable?: boolean;
+
+    // how to render
+    format?: (value: any) => any;
 }

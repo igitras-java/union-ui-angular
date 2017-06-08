@@ -1,6 +1,6 @@
 <div layout="row" layout-align="space-between center" class="md-caption ig-pager">
 
-    <button md-button type="button" [disabled]="isMinPage()" (click)="prevPage()">
+    <button md-button [color]="'primary'" [disabled]="isMinPage()" (click)="prevPage()">
         <md-icon *ngIf="!showLabelOnly">{{isRTL? 'navigate_next': 'navigate_before'}}</md-icon>
         <span *ngIf="showLabel">{{previousLabel? previousLabel: 'Previous'}}</span>
     </button>
@@ -9,7 +9,7 @@
         <ng-content></ng-content>
     </div>
 
-    <button md-button [disabled]="isMaxPage()" (click)="nextPage()">
+    <button md-button [color]="'primary'" [disabled]="isMaxPage()" (click)="nextPage()">
         <span *ngIf="showLabel">{{nextLabel? nextLabel: 'Next'}}</span>
         <md-icon *ngIf="!showLabelOnly">{{isRTL? 'navigate_before': 'navigate_next'}}</md-icon>
     </button>

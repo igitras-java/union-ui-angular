@@ -17,19 +17,17 @@
         </th>
         <th ig-data-table-column
             *ngFor="let column of columns"
-            [name]="column.name"
-            [numeric]="column.numeric"
-            [active]="(column.sortable || isSortable) && column === sortByColumn"
-            [sortable]="column.sortable ||  isSortable"
+            [fd]="column"
+            [active]="column === sortByColumn"
             [sortOrder]="sortOrderEnum"
-            [hidden]="column.hidden"
+            [hidden]="hidden(column)"
             (sortChange)="handleSort(column)">
             <span [mdTooltip]="column.tooltip">
-                {{column.label? (column.unit? column.label + ' (' + column.unit + ')': column.label): column.name}}
+                {{column.alias? (column.unit? column.alias + ' (' + column.unit + ')': column.alias): column.name}}
             </span>
         </th>
-        <th ig-data-table-column *ngIf="hasAction">
-            Action
+        <th ig-data-table-column class="mat-table-actions-column" *ngIf="hasAction">
+            操作
         </th>
         <tr ig-data-table-row
             [tabIndex]="isSelectable ? 0 : -1"
@@ -50,17 +48,19 @@
                 </md-pseudo-checkbox>
             </td>
             <td ig-data-table-cell
-                [numeric]="column.numeric"
-                [hidden]="column.hidden"
-                *ngFor="let column of columns">
-                <span class="md-body-1" *ngIf="!getTemplateRef(column.name)">{{column.format ? column.format(getCellValue(column, row)) : getCellValue(column, row)}}</span>
+                *ngFor="let column of columns"
+                [fd]="column"
+                [hidden]="hidden(column)">
+                <span class="md-body-1" *ngIf="!getTemplateRef(column.name)">
+                    {{column.format ? column.format(getCellValue(column, row)) : getCellValue(column, row)}}
+                </span>
                 <ng-template
                         *ngIf="getTemplateRef(column.name)"
                         [ngTemplateOutlet]="getTemplateRef(column.name)"
                         [ngOutletContext]="{ value: getCellValue(column, row), row: row, column: column.name }">
                 </ng-template>
             </td>
-            <td ig-data-table-cell class="mat-table-row-actions" *ngIf="hasAction">
+            <td ig-data-table-cell class="mat-table-actions-cell" *ngIf="hasAction">
                 <button md-icon-button *ngFor="let action of rowActions" color="{{action.color || 'accent'}}"
                         (click)="handleRowAction(row, action)" title="{{action.title || action.name}}">
                     <md-icon>{{action.icon}}</md-icon>

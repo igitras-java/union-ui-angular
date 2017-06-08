@@ -24,9 +24,20 @@ import { FormsModule } from '@angular/forms';
  * MODELS
  */
 import { Direction, IOrder, IPage, IPageable } from './models/page';
-import { IModelDescriptor, IModelType, IObjectDescriptor, IFieldDescriptor, IRangeFieldDescriptor, IArrayFieldDescriptor } from './models/model';
-import { IAction, IActionPerformedEvent, IContext } from './models/event'
-import { MdListModule } from '@angular/material';
+import {
+    IArrayFieldDescriptor,
+    IDecoratorType,
+    IFieldDecorator,
+    IFieldDescriptor,
+    IFieldFormDecorator,
+    IFieldInputElement,
+    IFieldTableDecorator,
+    IModelDescriptor,
+    IModelType,
+    IObjectDescriptor,
+    IRangeFieldDescriptor
+} from './models/model';
+import { ICommand, ICommandPerformedEvent, IEventContext } from './models/operation';
 
 /**
  * IG_ANIMATIONS
@@ -76,10 +87,15 @@ export {
     IFieldDescriptor,
     IRangeFieldDescriptor,
     IArrayFieldDescriptor,
+    IDecoratorType,
+    IFieldInputElement,
+    IFieldDecorator,
+    IFieldFormDecorator,
+    IFieldTableDecorator,
 
-    IAction,
-    IActionPerformedEvent,
-    IContext,
+    ICommand,
+    ICommandPerformedEvent,
+    IEventContext,
 }
 
 @NgModule({

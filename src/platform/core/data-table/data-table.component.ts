@@ -14,15 +14,15 @@ import {
     TemplateRef,
     ViewChildren
 } from '@angular/core';
-import {DOCUMENT} from '@angular/platform-browser';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { DOCUMENT } from '@angular/platform-browser';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import {DOWN_ARROW, ENTER, SPACE, UP_ARROW} from '@angular/material';
+import { DOWN_ARROW, ENTER, SPACE, UP_ARROW } from '@angular/material';
 
-import {DataTableRowComponent} from './data-table-row/data-table-row.component';
-import {IDataTableSortChangedEvent} from './data-table-column/data-table-column.component';
-import {DataTableTemplateDirective} from './directives/data-table-template.directive';
-import {Direction, IFieldDescriptor, IModelType} from '@igitras/core';
+import { DataTableRowComponent } from './data-table-row/data-table-row.component';
+import { IDataTableSortChangedEvent } from './data-table-column/data-table-column.component';
+import { DataTableTemplateDirective } from './directives/data-table-template.directive';
+import { Direction, IDecoratorType, IFieldDescriptor, IFieldTableDecorator, IModelType } from '@igitras/core';
 
 const noop: any = () => {
     // empty method
@@ -350,7 +350,7 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
     }
 
     getCellValue(column: IFieldDescriptor, value: any): string {
-        if (column.nested === undefined || column.nested) {
+        if (column.name.indexOf('.') > -1) {
             return this._getNestedValue(column.name, value);
         }
         return value[column.name];
@@ -406,8 +406,8 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
         // if selection is done by a [uniqueId] it uses it to compare, else it compares by reference.
         if (this.uniqueId) {
             return this._value ? this._value.filter((val: any) => {
-                return val[this.uniqueId] === row[this.uniqueId];
-            }).length > 0 : false;
+                    return val[this.uniqueId] === row[this.uniqueId];
+                }).length > 0 : false;
         }
         return this._value ? this._value.indexOf(row) > -1 : false;
     }
@@ -593,6 +593,11 @@ export class DataTableComponent implements ControlValueAccessor, AfterContentIni
 
     onChange = (_: any) => noop;
     onTouched = () => noop;
+
+    hidden(column: IFieldDescriptor): boolean {
+        let find: IFieldTableDecorator = column.decorators.find(decorator => decorator.type == IDecoratorType.Table);
+        return find ? find.hidden : false;
+    }
 
     private _getNestedValue(name: string, value: any): string {
         if (!(value instanceof Object) || !name) {

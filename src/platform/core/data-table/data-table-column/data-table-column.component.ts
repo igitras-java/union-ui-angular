@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, Renderer2 } from '@angular/core';
-import { Direction } from '@igitras/core';
+import { Direction, IDecoratorType, IFieldDescriptor, IFieldTableDecorator, IModelType } from '@igitras/core';
 
 export interface IDataTableSortChangedEvent {
     order: Direction;
@@ -16,18 +16,34 @@ export class DataTableColumnComponent {
 
     private _sortOrder: Direction = Direction.Ascending;
 
+    private _fd: IFieldDescriptor;
+    /**
+     * fd: IFieldDescriptor
+     *
+     * Field Description for column render of table.
+     */
+    @Input('fd')
+    set fd(fd: IFieldDescriptor) {
+        this._fd = fd;
+        this.apply(fd);
+    }
+
+    get fd(): IFieldDescriptor {
+        return this._fd;
+    }
+
     /**
      * name?: string
      * Sets unique column [name] for [sortable] events.
      */
-    @Input('name') name: string = '';
+    name: string = '';
 
     /**
      * sortable?: boolean
      * Enables sorting events, sort icons and active column states.
      * Defaults to 'false'
      */
-    @Input('sortable') sortable: boolean = false;
+    sortable: boolean = false;
 
     /**
      * active?: boolean
@@ -41,7 +57,7 @@ export class DataTableColumnComponent {
      * Makes column follow the numeric data-table specs and sort icon.
      * Defaults to 'false'
      */
-    @Input('numeric') numeric: boolean = false;
+    numeric: boolean = false;
 
     /**
      * sortOrder?: ['ASC' | 'DESC'] or Direction
@@ -101,6 +117,18 @@ export class DataTableColumnComponent {
 
     isDescending(): boolean {
         return this._sortOrder === Direction.Descending;
+    }
+
+    private apply(fd: IFieldDescriptor): void {
+        if (fd === null || fd === undefined) {
+            return;
+        }
+        this.name = fd.name;
+        this.numeric = fd.type == IModelType.Number
+        let find: IFieldTableDecorator = this.fd.decorators.find(decorator => decorator.type === IDecoratorType.Table);
+        if (find) {
+            this.sortable = find.sortable;
+        }
     }
 
 }

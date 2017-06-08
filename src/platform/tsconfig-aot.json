@@ -8,17 +8,16 @@
         "experimentalDecorators": true,
         "lib": [
             "es6",
-            "es2015",
             "dom"
         ],
-        "module": "es2015",
+        "module": "es6",
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": true,
         "outDir": "../../deploy/platform",
         "rootDir": ".",
         "sourceMap": true,
-        "target": "es5",
+        "target": "es6",
         "inlineSources": true,
         "stripInternal": false,
         "typeRoots": [
