@@ -10,10 +10,10 @@ import {
     ViewChild,
     ViewChildren
 } from '@angular/core';
-import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BACKSPACE, DELETE, ESCAPE, LEFT_ARROW, MdChip, MdInputDirective, RIGHT_ARROW } from '@angular/material';
-import { IFieldDescriptor } from 'platform/core';
-import { Focusable } from '@angular/material/typings/core/a11y/focus-key-manager';
+import {FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {BACKSPACE, DELETE, ESCAPE, LEFT_ARROW, MdChip, MdInputDirective, RIGHT_ARROW} from '@angular/material';
+import {IFieldDescriptor, IDecoratorType, IFieldTableDecorator} from 'platform/core';
+import {Focusable} from '@angular/material/typings/core/a11y/focus-key-manager';
 
 const noop: any = () => {
     // empty method
@@ -144,7 +144,7 @@ export class SearchComponent implements Focusable, DoCheck, OnInit {
         console.log(selectedFields);
         this.filteredItems = this.items
             .filter((item: IFieldDescriptor) => {
-                return item.searchable ? item.searchable : false;
+                return this.searchable(item);
             })
             .filter((item: IFieldDescriptor) => {
                 return selectedFields.indexOf(item) <= -1;
@@ -364,6 +364,11 @@ export class SearchComponent implements Focusable, DoCheck, OnInit {
         } else {
             this.inputControl.disable();
         }
+    }
+
+    private searchable(field: IFieldDescriptor): boolean {
+        var find: IFieldTableDecorator = field.decorators.find(decorator => decorator.type === IDecoratorType.Table);
+        return find ? find.searchable : false;
     }
 
 }
